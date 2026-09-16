@@ -5,29 +5,17 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Lofi Focus Room</title>
 
 <style>
-
-/* =========================
-   GENERAL
-========================= */
 
 * {
     box-sizing: border-box;
 }
 
-html,
 body {
     margin: 0;
-    width: 100%;
-    height: 100%;
     overflow: hidden;
-}
-
-body {
     font-family: Georgia, serif;
     background: #1b1412;
 }
@@ -37,7 +25,6 @@ body {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-
     background:
         linear-gradient(
             to bottom,
@@ -48,18 +35,12 @@ body {
         );
 }
 
-
-/* =========================
-   WALL
-========================= */
-
 .wall {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 72%;
-
     background:
         radial-gradient(
             circle at 30% 20%,
@@ -72,18 +53,12 @@ body {
         );
 }
 
-
-/* =========================
-   FLOOR
-========================= */
-
 .floor {
     position: absolute;
     left: 0;
     bottom: 0;
     width: 100%;
     height: 28%;
-
     background:
         repeating-linear-gradient(
             90deg,
@@ -101,10 +76,8 @@ body {
 
 .window {
     position: absolute;
-
     top: 8%;
     left: 52%;
-
     width: 300px;
     height: 270px;
 
@@ -130,43 +103,27 @@ body {
 
 .window::before {
     content: "";
-
     position: absolute;
-
     left: 50%;
     top: 0;
-
     height: 100%;
     width: 7px;
-
     background: #4a342d;
-
-    transform:
-        translateX(-50%);
+    transform: translateX(-50%);
 }
 
 .window::after {
     content: "";
-
     position: absolute;
-
     top: 50%;
     left: 0;
-
     width: 100%;
     height: 7px;
-
     background: #4a342d;
-
-    transform:
-        translateY(-50%);
+    transform: translateY(-50%);
 }
 
-
-/* DAYTIME WINDOW */
-
 .window.day {
-
     background:
         linear-gradient(
             to bottom,
@@ -176,24 +133,15 @@ body {
         );
 }
 
-
-/* SUN */
-
 .sun {
     display: none;
-
     position: absolute;
-
     width: 65px;
     height: 65px;
-
     border-radius: 50%;
-
     background: #f1d27c;
-
     top: 38px;
     right: 42px;
-
     box-shadow:
         0 0 30px rgba(241,210,124,.6);
 }
@@ -202,51 +150,34 @@ body {
     display: block;
 }
 
-
-/* CLOUDS */
-
 .cloud {
     display: none;
-
     position: absolute;
-
     width: 65px;
     height: 20px;
-
     background: rgba(240,240,230,.7);
-
     border-radius: 20px;
 }
 
 .cloud::before {
     content: "";
-
     position: absolute;
-
     width: 27px;
     height: 27px;
-
     left: 10px;
     top: -13px;
-
     border-radius: 50%;
-
     background: rgba(240,240,230,.7);
 }
 
 .cloud::after {
     content: "";
-
     position: absolute;
-
     width: 22px;
     height: 22px;
-
     right: 10px;
     top: -9px;
-
     border-radius: 50%;
-
     background: rgba(240,240,230,.7);
 }
 
@@ -265,17 +196,11 @@ body {
     display: block;
 }
 
-
-/* DISTANT DAY TREES */
-
 .day-trees {
     display: none;
-
     position: absolute;
-
     left: 0;
     bottom: 0;
-
     width: 100%;
     height: 75px;
 }
@@ -286,14 +211,10 @@ body {
 
 .day-tree {
     position: absolute;
-
     bottom: 0;
-
     width: 65px;
     height: 75px;
-
     background: #4d674f;
-
     clip-path:
         polygon(
             50% 0%,
@@ -330,36 +251,22 @@ body {
     transform: scale(.7);
 }
 
-
-/* MOON */
-
 .moon {
     position: absolute;
-
     width: 75px;
     height: 75px;
-
     border-radius: 50%;
-
     background: #eee5c9;
-
     top: 35px;
     right: 48px;
-
     box-shadow:
         0 0 30px rgba(238,229,201,.3);
 }
 
-
-/* STARS */
-
 .star {
     position: absolute;
-
     color: #eee5c9;
-
     font-size: 9px;
-
     opacity: .8;
 }
 
@@ -395,81 +302,52 @@ body {
 
 .clock {
     position: absolute;
-
     top: 7%;
     left: 38%;
-
     width: 95px;
     height: 95px;
-
     border-radius: 50%;
-
     background: #eadfc9;
-
     border: 8px solid #51382f;
-
     box-shadow:
         0 7px 15px rgba(0,0,0,.3);
-
     cursor: pointer;
-
     z-index: 10;
 }
 
 .clock::before {
     content: "";
-
     position: absolute;
-
     width: 4px;
     height: 31px;
-
     background: #3a2925;
-
     left: 50%;
     top: 17px;
-
     transform-origin: bottom;
-
-    transform:
-        rotate(25deg);
+    transform: rotate(25deg);
 }
 
 .clock::after {
     content: "";
-
     position: absolute;
-
     width: 4px;
     height: 25px;
-
     background: #3a2925;
-
     left: 50%;
     top: 23px;
-
     transform-origin: bottom;
-
-    transform:
-        rotate(125deg);
+    transform: rotate(125deg);
 }
 
 .clock-guide {
     position: absolute;
-
     top: 3%;
     left: 50%;
-
     transform: translateX(-50%);
-
     color: #d7c5a8;
-
     font-size: 14px;
-
     opacity: .75;
-
     z-index: 20;
-
     white-space: nowrap;
 }
 
@@ -480,24 +358,18 @@ body {
 
 .picture {
     position: absolute;
-
     background: #d9c6a9;
-
     border: 8px solid #4a342d;
-
     box-shadow:
         0 7px 15px rgba(0,0,0,.3);
-
     overflow: hidden;
 }
 
 .picture1 {
     top: 7%;
     left: 5%;
-
     width: 130px;
     height: 95px;
-
     background:
         linear-gradient(
             to bottom,
@@ -510,17 +382,12 @@ body {
 
 .picture1::before {
     content: "";
-
     position: absolute;
-
     width: 65px;
     height: 45px;
-
     background: #53645a;
-
     bottom: 20px;
     left: 5px;
-
     clip-path:
         polygon(
             0 100%,
@@ -532,17 +399,12 @@ body {
 
 .picture1::after {
     content: "";
-
     position: absolute;
-
     width: 55px;
     height: 38px;
-
     background: #435349;
-
     bottom: 20px;
     right: 2px;
-
     clip-path:
         polygon(
             0 100%,
@@ -554,25 +416,18 @@ body {
 .picture2 {
     top: 26%;
     left: 28%;
-
     width: 110px;
     height: 85px;
-
     background: #c7a9a2;
 }
 
 .picture2::before {
     content: "✦";
-
     position: absolute;
-
     top: 10px;
     left: 20px;
-
     font-size: 30px;
-
     color: #704d55;
-
     text-shadow:
         25px 20px 0 #80645a,
         45px -5px 0 #5c6d68;
@@ -580,20 +435,13 @@ body {
 
 .picture2::after {
     content: "";
-
     position: absolute;
-
     width: 75px;
     height: 7px;
-
     background: #80645a;
-
     left: 17px;
     bottom: 18px;
-
-    transform:
-        rotate(-10deg);
-
+    transform: rotate(-10deg);
     box-shadow:
         8px -12px 0 #a3796f;
 }
@@ -601,42 +449,30 @@ body {
 .picture3 {
     top: 10%;
     right: 7%;
-
     width: 120px;
     height: 90px;
-
     background: #b7a68f;
 }
 
 .picture3::before {
     content: "";
-
     position: absolute;
-
     width: 55px;
     height: 55px;
-
     border-radius: 50%;
-
     background: #d8c28e;
-
     top: 10px;
     left: 30px;
 }
 
 .picture3::after {
     content: "";
-
     position: absolute;
-
     width: 90px;
     height: 35px;
-
     background: #687064;
-
     bottom: 0;
     left: 10px;
-
     clip-path:
         polygon(
             0 100%,
@@ -656,13 +492,10 @@ body {
 
 .bed {
     position: absolute;
-
     left: 5%;
     bottom: 11%;
-
     width: 455px;
     height: 190px;
-
     background:
         linear-gradient(
             to bottom,
@@ -670,27 +503,20 @@ body {
             #634238 70%,
             #4d332c 100%
         );
-
     border-radius:
         14px 14px 8px 8px;
-
     box-shadow:
         0 18px 28px rgba(0,0,0,.48);
-
     z-index: 4;
 }
 
 .bed::before {
     content: "";
-
     position: absolute;
-
     left: -8px;
     top: -35px;
-
     width: 18px;
     height: 190px;
-
     background:
         linear-gradient(
             90deg,
@@ -698,48 +524,36 @@ body {
             #68483b,
             #3d2924
         );
-
     border-radius:
         8px 0 0 8px;
-
     box-shadow:
         5px 0 8px rgba(0,0,0,.25);
 }
 
 .bed::after {
     content: "";
-
     position: absolute;
-
     left: 10px;
     right: 10px;
-
     bottom: 12px;
-
     height: 30px;
-
     background:
         linear-gradient(
             to bottom,
             #6b473b,
             #422d27
         );
-
     border-radius: 5px;
-
     box-shadow:
         inset 0 5px 7px rgba(255,255,255,.06);
 }
 
 .mattress {
     position: absolute;
-
     left: 10px;
     top: -31px;
-
     width: 435px;
     height: 77px;
-
     background:
         linear-gradient(
             to bottom,
@@ -747,10 +561,8 @@ body {
             #cdbda6 65%,
             #b7a48f 100%
         );
-
     border-radius:
         23px 23px 12px 12px;
-
     box-shadow:
         0 8px 10px rgba(0,0,0,.3),
         inset 0 4px 8px rgba(255,255,255,.25);
@@ -758,31 +570,22 @@ body {
 
 .mattress::after {
     content: "";
-
     position: absolute;
-
     left: 5px;
     right: 5px;
-
     bottom: 7px;
-
     height: 7px;
-
     border-radius: 50%;
-
     background:
         rgba(112,91,76,.25);
 }
 
 .blanket {
     position: absolute;
-
     left: 142px;
     top: -5px;
-
     width: 292px;
     height: 102px;
-
     background:
         linear-gradient(
             105deg,
@@ -790,10 +593,8 @@ body {
             #686261 45%,
             #595555 100%
         );
-
     border-radius:
         0 0 20px 25px;
-
     box-shadow:
         inset 0 5px 8px rgba(255,255,255,.06),
         0 5px 8px rgba(0,0,0,.15);
@@ -801,18 +602,13 @@ body {
 
 .blanket::before {
     content: "";
-
     position: absolute;
-
     left: 25px;
     top: 8px;
-
     width: 235px;
     height: 70px;
-
     border-radius:
         0 0 20px 20px;
-
     background:
         repeating-linear-gradient(
             100deg,
@@ -825,18 +621,13 @@ body {
 
 .blanket::after {
     content: "";
-
     position: absolute;
-
     right: 18px;
     top: 0;
-
     width: 40px;
     height: 85px;
-
     border-radius:
         0 0 20px 20px;
-
     background:
         linear-gradient(
             90deg,
@@ -844,30 +635,23 @@ body {
             rgba(255,255,255,.08),
             transparent
         );
-
-    transform:
-        rotate(3deg);
+    transform: rotate(3deg);
 }
 
 .pillow {
     position: absolute;
-
     left: 25px;
     top: -21px;
-
     width: 125px;
     height: 54px;
-
     background:
         linear-gradient(
             to bottom,
             #eee4d2,
             #d7c9b3
         );
-
     border-radius:
         20px 22px 16px 17px;
-
     box-shadow:
         0 5px 8px rgba(0,0,0,.22),
         inset 0 3px 5px rgba(255,255,255,.3);
@@ -875,46 +659,32 @@ body {
 
 .pillow::before {
     content: "";
-
     position: absolute;
-
     inset: 6px;
-
     border:
         1px solid rgba(120,100,85,.22);
-
     border-radius:
         15px 17px 12px 13px;
 }
 
 .pillow::after {
     content: "";
-
     position: absolute;
-
     width: 45px;
     height: 8px;
-
     left: 38px;
     top: 21px;
-
     border-radius: 50%;
-
     background:
         rgba(120,100,85,.10);
-
-    transform:
-        rotate(-4deg);
+    transform: rotate(-4deg);
 }
 
 .bed-leg {
     position: absolute;
-
     bottom: -32px;
-
     width: 20px;
     height: 34px;
-
     background:
         linear-gradient(
             90deg,
@@ -922,9 +692,7 @@ body {
             #5a3b31,
             #30221e
         );
-
     border-radius: 3px;
-
     z-index: -1;
 }
 
@@ -944,54 +712,40 @@ body {
 
 
 /* =========================
-   CAT AND DOG
+   PETS
 ========================= */
 
 .pets {
     position: absolute;
-
     left: 24%;
     bottom: 7%;
-
     width: 230px;
     height: 75px;
-
     z-index: 9;
-
     pointer-events: none;
 }
 
 .cat {
     position: absolute;
-
     left: 5px;
     bottom: 0;
-
     width: 55px;
     height: 45px;
-
     background: #8a7467;
-
     border-radius:
         50% 50% 45% 45%;
-
     box-shadow:
         0 6px 8px rgba(0,0,0,.25);
 }
 
 .cat::before {
     content: "";
-
     position: absolute;
-
     left: 6px;
     top: -13px;
-
     width: 18px;
     height: 22px;
-
     background: #8a7467;
-
     clip-path:
         polygon(
             0 100%,
@@ -1003,17 +757,12 @@ body {
 
 .cat::after {
     content: "";
-
     position: absolute;
-
     right: 6px;
     top: -13px;
-
     width: 18px;
     height: 22px;
-
     background: #8a7467;
-
     clip-path:
         polygon(
             0 65%,
@@ -1025,34 +774,24 @@ body {
 
 .cat-face {
     position: absolute;
-
     left: 15px;
     top: 12px;
-
     width: 5px;
     height: 5px;
-
     background: #302522;
-
     border-radius: 50%;
-
     box-shadow:
         20px 0 #302522;
 }
 
 .cat-face::after {
     content: "";
-
     position: absolute;
-
     left: 8px;
     top: 8px;
-
     width: 5px;
     height: 4px;
-
     background: #5c3f38;
-
     clip-path:
         polygon(
             50% 100%,
@@ -1063,164 +802,112 @@ body {
 
 .cat-tail {
     position: absolute;
-
     right: -20px;
     bottom: 10px;
-
     width: 30px;
     height: 30px;
-
     border:
         7px solid #8a7467;
-
     border-left: none;
-
     border-radius:
         0 20px 20px 0;
-
-    transform:
-        rotate(-20deg);
+    transform: rotate(-20deg);
 }
 
 .dog {
     position: absolute;
-
     right: 8px;
     bottom: 0;
-
     width: 72px;
     height: 48px;
-
     background: #a98260;
-
     border-radius:
         48% 45% 35% 40%;
-
     box-shadow:
         0 6px 8px rgba(0,0,0,.25);
 }
 
 .dog-head {
     position: absolute;
-
     left: -5px;
     top: -23px;
-
     width: 50px;
     height: 48px;
-
     background: #b58b65;
-
     border-radius:
         50% 48% 45% 45%;
 }
 
 .dog-head::before {
     content: "";
-
     position: absolute;
-
     left: -8px;
     top: 4px;
-
     width: 18px;
     height: 31px;
-
     background: #76533f;
-
     border-radius:
         50% 20% 50% 50%;
-
-    transform:
-        rotate(15deg);
+    transform: rotate(15deg);
 }
 
 .dog-head::after {
     content: "";
-
     position: absolute;
-
     right: -8px;
     top: 7px;
-
     width: 18px;
     height: 29px;
-
     background: #76533f;
-
     border-radius:
         20% 50% 50% 50%;
-
-    transform:
-        rotate(-15deg);
+    transform: rotate(-15deg);
 }
 
 .dog-face {
     position: absolute;
-
     left: 13px;
     top: 15px;
-
     width: 5px;
     height: 5px;
-
     background: #2b211d;
-
     border-radius: 50%;
-
     box-shadow:
         18px 0 #2b211d;
 }
 
 .dog-face::after {
     content: "";
-
     position: absolute;
-
     left: 8px;
     top: 8px;
-
     width: 8px;
     height: 6px;
-
     background: #30231f;
-
     border-radius: 50%;
 }
 
 .dog-tail {
     position: absolute;
-
     right: -18px;
     top: 3px;
-
     width: 30px;
     height: 30px;
-
     border:
         8px solid #a98260;
-
     border-left: none;
-
     border-bottom: none;
-
     border-radius:
         0 25px 0 0;
-
-    transform:
-        rotate(-20deg);
+    transform: rotate(-20deg);
 }
 
 .dog-leg {
     position: absolute;
-
     bottom: -9px;
-
     width: 15px;
     height: 22px;
-
     background: #916b4f;
-
     border-radius:
         0 0 8px 8px;
 }
@@ -1235,53 +922,39 @@ body {
 
 
 /* =========================
-   BEDSIDE TABLE
+   BEDSIDE
 ========================= */
 
 .bedside {
     position: absolute;
-
     left: 1.5%;
     bottom: 11%;
-
     width: 105px;
     height: 130px;
-
     background: #593d32;
-
     border-radius: 8px;
-
     box-shadow:
         0 12px 20px rgba(0,0,0,.4);
-
     z-index: 6;
 }
 
 .bedside::before {
     content: "";
-
     position: absolute;
-
     top: 35px;
     left: 13px;
-
     width: 79px;
     height: 8px;
-
     background: #3c2925;
-
     box-shadow:
         0 38px 0 #3c2925;
 }
 
 .table-leg {
     position: absolute;
-
     bottom: -30px;
-
     width: 14px;
     height: 32px;
-
     background: #3c2925;
 }
 
@@ -1295,32 +968,23 @@ body {
 
 .lamp {
     position: absolute;
-
     left: 27px;
     top: -65px;
-
     width: 52px;
     height: 60px;
-
     background: #c99b65;
-
     border-radius:
         50% 50% 10% 10%;
-
     box-shadow:
         0 0 35px rgba(225,176,102,.3);
 }
 
 .lamp::after {
     content: "";
-
     position: absolute;
-
     width: 8px;
     height: 20px;
-
     background: #5b4035;
-
     left: 22px;
     bottom: -20px;
 }
@@ -1332,41 +996,30 @@ body {
 
 .easel {
     position: absolute;
-
     left: 39%;
     bottom: 12%;
-
     width: 155px;
     height: 205px;
-
     z-index: 6;
 }
 
 .easel-canvas {
     position: absolute;
-
     top: 0;
     left: 24px;
-
     width: 108px;
     height: 82px;
-
     background: #e7d8bd;
-
     border:
         7px solid #68483a;
-
     box-shadow:
         0 8px 12px rgba(0,0,0,.35);
-
     overflow: hidden;
 }
 
 .painting-sky {
     position: absolute;
-
     inset: 0;
-
     background:
         linear-gradient(
             to bottom,
@@ -1379,32 +1032,23 @@ body {
 
 .painting-sun {
     position: absolute;
-
     width: 23px;
     height: 23px;
-
     border-radius: 50%;
-
     background: #e4c477;
-
     top: 12px;
     right: 14px;
-
     box-shadow:
         0 0 12px rgba(228,196,119,.5);
 }
 
 .mountain1 {
     position: absolute;
-
     width: 75px;
     height: 55px;
-
     bottom: 22px;
     left: -4px;
-
     background: #68766d;
-
     clip-path:
         polygon(
             0 100%,
@@ -1415,15 +1059,11 @@ body {
 
 .mountain2 {
     position: absolute;
-
     width: 82px;
     height: 60px;
-
     bottom: 21px;
     right: -10px;
-
     background: #4e6258;
-
     clip-path:
         polygon(
             0 100%,
@@ -1434,15 +1074,11 @@ body {
 
 .mountain-snow {
     position: absolute;
-
     width: 35px;
     height: 22px;
-
     top: 19px;
     left: 29px;
-
     background: #ddd9c7;
-
     clip-path:
         polygon(
             0 100%,
@@ -1456,70 +1092,50 @@ body {
 
 .painting-ground {
     position: absolute;
-
     left: 0;
     bottom: 0;
-
     width: 100%;
     height: 25px;
-
     background: #506044;
 }
 
 .painting-tree {
     position: absolute;
-
     bottom: 16px;
     left: 13px;
-
     width: 7px;
     height: 35px;
-
     background: #493e34;
 }
 
 .painting-tree::before {
     content: "";
-
     position: absolute;
-
     width: 27px;
     height: 35px;
-
     background: #3f5944;
-
     border-radius: 50%;
-
     left: -10px;
     top: -22px;
 }
 
 .easel-shelf {
     position: absolute;
-
     top: 79px;
     left: 16px;
-
     width: 125px;
     height: 13px;
-
     background: #68483a;
-
     border-radius: 4px;
 }
 
 .easel-leg {
     position: absolute;
-
     top: 75px;
-
     width: 13px;
     height: 130px;
-
     background: #68483a;
-
     transform-origin: top;
-
     border-radius: 5px;
 }
 
@@ -1538,58 +1154,37 @@ body {
     height: 135px;
 }
 
-
-/* =========================
-   ART SUPPLIES
-========================= */
-
 .art-supplies {
     position: absolute;
-
     left: 15px;
     bottom: -2px;
-
     width: 125px;
     height: 48px;
-
     z-index: 7;
 }
 
 .palette {
     position: absolute;
-
     left: 2px;
     bottom: 3px;
-
     width: 48px;
     height: 25px;
-
     background: #a98567;
-
     border-radius: 50%;
-
-    transform:
-        rotate(-12deg);
-
+    transform: rotate(-12deg);
     box-shadow:
         0 4px 5px rgba(0,0,0,.35);
 }
 
 .palette::before {
     content: "";
-
     position: absolute;
-
     width: 8px;
     height: 8px;
-
     border-radius: 50%;
-
     background: #9d6355;
-
     top: 5px;
     left: 10px;
-
     box-shadow:
         14px -3px 0 #6d7d65,
         25px 5px 0 #c59b62,
@@ -1598,107 +1193,75 @@ body {
 
 .palette::after {
     content: "";
-
     position: absolute;
-
     width: 8px;
     height: 8px;
-
     border-radius: 50%;
-
     background: #d6c39c;
-
     right: 4px;
     bottom: 5px;
 }
 
 .paint-tube {
     position: absolute;
-
     width: 14px;
     height: 30px;
-
     border-radius:
         4px 4px 3px 3px;
-
     transform-origin: bottom;
-
     box-shadow:
         0 3px 4px rgba(0,0,0,.3);
 }
 
 .paint-tube::before {
     content: "";
-
     position: absolute;
-
     top: -5px;
     left: 3px;
-
     width: 8px;
     height: 7px;
-
     background: #d4c7a9;
-
     border-radius: 2px;
 }
 
 .paint-tube1 {
     left: 55px;
     bottom: 4px;
-
     background: #9d6355;
-
-    transform:
-        rotate(18deg);
+    transform: rotate(18deg);
 }
 
 .paint-tube2 {
     left: 70px;
     bottom: 3px;
-
     background: #657764;
-
-    transform:
-        rotate(-12deg);
+    transform: rotate(-12deg);
 }
 
 .paint-tube3 {
     left: 85px;
     bottom: 4px;
-
     background: #b58a5f;
-
-    transform:
-        rotate(22deg);
+    transform: rotate(22deg);
 }
 
 .brush {
     position: absolute;
-
     width: 5px;
     height: 45px;
-
     background: #76513e;
-
     border-radius: 3px;
-
     transform-origin: bottom;
 }
 
 .brush::before {
     content: "";
-
     position: absolute;
-
     width: 9px;
     height: 13px;
-
     left: -2px;
     top: -7px;
-
     background: #4f6651;
-
     border-radius:
         50% 50% 45% 45%;
 }
@@ -1706,17 +1269,13 @@ body {
 .brush1 {
     left: 101px;
     bottom: 1px;
-
-    transform:
-        rotate(22deg);
+    transform: rotate(22deg);
 }
 
 .brush2 {
     left: 110px;
     bottom: 2px;
-
-    transform:
-        rotate(35deg);
+    transform: rotate(35deg);
 }
 
 
@@ -1726,45 +1285,32 @@ body {
 
 .desk {
     position: absolute;
-
     right: 5%;
     bottom: 11%;
-
     width: 390px;
     height: 170px;
-
     background: #5a4035;
-
     border-radius: 8px;
-
     box-shadow:
         0 15px 25px rgba(0,0,0,.4);
-
     z-index: 5;
 }
 
 .desk-top {
     position: absolute;
-
     top: -15px;
     left: -10px;
-
     width: 410px;
     height: 25px;
-
     background: #765343;
-
     border-radius: 5px;
 }
 
 .desk-leg {
     position: absolute;
-
     bottom: -80px;
-
     width: 22px;
     height: 80px;
-
     background: #3c2925;
 }
 
@@ -1783,70 +1329,47 @@ body {
 
 .laptop {
     position: absolute;
-
     width: 145px;
     height: 90px;
-
     background: #252323;
-
     border:
         6px solid #171717;
-
     border-radius: 8px;
-
     top: -105px;
     left: 115px;
-
     z-index: 4;
 }
 
 .laptop::after {
     content: "";
-
     position: absolute;
-
     width: 175px;
     height: 9px;
-
     background: #171717;
-
     bottom: -15px;
     left: -20px;
-
     border-radius: 5px;
 }
 
 .laptop-screen {
     position: absolute;
-
     inset: 8px;
-
     background: #f0eee8;
-
     overflow: hidden;
 }
 
 .laptop-screen::before {
     content: "Document";
-
     position: absolute;
-
     top: 5px;
     left: 7px;
     right: 7px;
-
     height: 13px;
-
     background: #d9d6ce;
-
     color: #665e57;
-
     font-family: Arial, sans-serif;
-
     font-size: 6px;
-
     font-weight: bold;
-
     padding: 3px 4px;
 }
 
@@ -1865,46 +1388,34 @@ body {
         "The story was beginning.";
 
     white-space: pre;
-
     position: absolute;
-
     left: 10px;
     top: 25px;
-
     color: #3d3b39;
-
     font-family: Georgia, serif;
-
     font-size: 5px;
-
     line-height: 8px;
 }
 
 
 /* =========================
-   PENCILS
+   DESK OBJECTS
 ========================= */
 
 .pencils {
     position: absolute;
-
     right: 35px;
     top: -70px;
-
     width: 65px;
     height: 65px;
 }
 
 .pencil {
     position: absolute;
-
     width: 7px;
     height: 65px;
-
     background: #b87957;
-
     bottom: 0;
-
     transform-origin: bottom;
 }
 
@@ -1923,39 +1434,25 @@ body {
     transform: rotate(20deg);
 }
 
-
-/* =========================
-   VASE
-========================= */
-
 .vase {
     position: absolute;
-
     right: 80px;
     top: -65px;
-
     width: 45px;
     height: 65px;
-
     background: #9b7768;
-
     border-radius:
         8px 8px 20px 20px;
 }
 
 .flower {
     position: absolute;
-
     width: 9px;
     height: 65px;
-
     background: #576044;
-
     bottom: 55px;
     left: 18px;
-
-    transform:
-        rotate(-10deg);
+    transform: rotate(-10deg);
 }
 
 
@@ -1965,139 +1462,99 @@ body {
 
 .girl {
     position: absolute;
-
     left: 48%;
     bottom: 14%;
-
     width: 130px;
     height: 270px;
-
     z-index: 8;
-
     transition:
         left 1.8s ease;
 }
 
 .head {
     position: absolute;
-
     left: 38px;
     top: 5px;
-
     width: 65px;
     height: 75px;
-
     background: #d6a47c;
-
     border-radius:
         48% 48% 45% 45%;
 }
 
 .hair {
     position: absolute;
-
     left: 28px;
     top: -4px;
-
     width: 82px;
     height: 82px;
-
     background: #241b1a;
-
     border-radius:
         50% 50% 35% 35%;
-
     z-index: 2;
 }
 
 .hair::after {
     content: "";
-
     position: absolute;
-
     right: -8px;
     top: 20px;
-
     width: 22px;
     height: 75px;
-
     background: #241b1a;
-
     border-radius:
         0 0 15px 15px;
 }
 
 .face {
     position: absolute;
-
     left: 52px;
     top: 28px;
-
     width: 5px;
     height: 5px;
-
     background: #2c211e;
-
     border-radius: 50%;
-
     z-index: 4;
-
     box-shadow:
         25px 0 #2c211e;
 }
 
 .body {
     position: absolute;
-
     left: 33px;
     top: 73px;
-
     width: 75px;
     height: 120px;
-
     background: #282c30;
-
     border-radius:
         18px 18px 8px 8px;
 }
 
 .arm {
     position: absolute;
-
     top: 82px;
-
     width: 20px;
     height: 95px;
-
     background: #d6a47c;
-
     border-radius: 15px;
 }
 
 .arm-left {
     left: 18px;
-
-    transform:
-        rotate(15deg);
+    transform: rotate(15deg);
 }
 
 .arm-right {
     right: 18px;
-
-    transform:
-        rotate(-15deg);
+    transform: rotate(-15deg);
 }
 
 .leg {
     position: absolute;
-
     top: 185px;
-
     width: 25px;
     height: 80px;
-
     background: #272426;
-
     border-radius: 12px;
 }
 
@@ -2111,14 +1568,10 @@ body {
 
 .shoe {
     position: absolute;
-
     bottom: -4px;
-
     width: 42px;
     height: 20px;
-
     background: #171516;
-
     border-radius:
         15px 15px 7px 7px;
 }
@@ -2132,23 +1585,40 @@ body {
 }
 
 
-/* WORKING HEAD MOVEMENT */
+/* =========================
+   ANIMATIONS
+========================= */
 
 .girl.working .head {
     animation:
         headBob 1.4s infinite ease-in-out;
 }
 
+.girl.hobbying .head {
+    animation:
+        hobbyBob 2.2s infinite ease-in-out;
+}
+
 @keyframes headBob {
 
     0%, 100% {
-        transform:
-            rotate(0deg);
+        transform: rotate(0deg);
     }
 
     50% {
-        transform:
-            rotate(5deg);
+        transform: rotate(5deg);
+    }
+
+}
+
+@keyframes hobbyBob {
+
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(-3deg);
     }
 
 }
@@ -2160,37 +1630,23 @@ body {
 
 .modal {
     position: fixed;
-
     inset: 0;
-
     background:
         rgba(0,0,0,.62);
-
     display: none;
-
     align-items: center;
     justify-content: center;
-
     z-index: 100;
-
-    padding: 20px;
 }
 
 .modal-box {
     width: 360px;
-    max-width: 100%;
-
     padding: 30px;
-
     background: #e6d7bd;
-
     color: #3a2924;
-
     border-radius: 15px;
-
     box-shadow:
         0 20px 50px rgba(0,0,0,.5);
-
     text-align: center;
 }
 
@@ -2198,57 +1654,31 @@ body {
     margin-top: 0;
 }
 
-
-/* =========================
-   BUTTONS
-========================= */
-
 button {
     border: none;
-
     padding:
         12px 20px;
-
     margin: 7px;
-
     border-radius: 8px;
-
     background: #66483d;
-
     color: white;
-
     font-family: Georgia, serif;
-
     cursor: pointer;
-
     font-size: 15px;
-
-    touch-action: manipulation;
 }
 
 button:hover {
     background: #805b4d;
 }
 
-
-/* =========================
-   INPUT
-========================= */
-
 input {
     width: 100%;
-
     padding: 12px;
-
     margin: 12px 0;
-
     border:
         2px solid #9d806d;
-
     border-radius: 8px;
-
     font-family: Georgia, serif;
-
     font-size: 16px;
 }
 
@@ -2259,720 +1689,22 @@ input {
 
 .timer {
     position: fixed;
-
     top: 25px;
     right: 25px;
-
     padding:
         14px 20px;
-
     background:
         rgba(30,20,18,.85);
-
     color: #eadfc9;
-
     border-radius: 10px;
-
     display: none;
-
     z-index: 90;
-
     text-align: center;
 }
 
 .timer-time {
     font-size: 27px;
-
     margin-bottom: 7px;
-}
-
-
-/* =========================================================
-   MOBILE VERSION
-========================================================= */
-
-@media (max-width: 600px) {
-
-    body {
-        overflow: hidden;
-    }
-
-    .room {
-        width: 100vw;
-        height: 100vh;
-    }
-
-
-    /* WALL / FLOOR */
-
-    .wall {
-        height: 67%;
-    }
-
-    .floor {
-        height: 33%;
-    }
-
-
-    /* WINDOW */
-
-    .window {
-        top: 7%;
-        left: auto;
-        right: 8%;
-
-        width: 155px;
-        height: 145px;
-
-        border-width: 7px;
-    }
-
-    .window::before {
-        width: 4px;
-    }
-
-    .window::after {
-        height: 4px;
-    }
-
-    .moon {
-        width: 38px;
-        height: 38px;
-
-        top: 18px;
-        right: 20px;
-    }
-
-    .sun {
-        width: 38px;
-        height: 38px;
-
-        top: 18px;
-        right: 20px;
-    }
-
-    .cloud {
-        width: 38px;
-        height: 12px;
-    }
-
-    .cloud::before {
-        width: 17px;
-        height: 17px;
-
-        left: 6px;
-        top: -8px;
-    }
-
-    .cloud::after {
-        width: 14px;
-        height: 14px;
-
-        right: 6px;
-        top: -6px;
-    }
-
-    .cloud1 {
-        top: 35px;
-        left: 18px;
-    }
-
-    .cloud2 {
-        top: 75px;
-        left: 75px;
-    }
-
-    .day-trees {
-        height: 42px;
-    }
-
-    .day-tree {
-        width: 35px;
-        height: 42px;
-    }
-
-    .day-tree1 {
-        left: 4px;
-    }
-
-    .day-tree2 {
-        left: 35px;
-    }
-
-    .day-tree3 {
-        right: 25px;
-    }
-
-    .day-tree4 {
-        right: 3px;
-    }
-
-
-    /* WALL ART */
-
-    .picture1 {
-        top: 8%;
-        left: 5%;
-
-        width: 82px;
-        height: 60px;
-
-        border-width: 5px;
-    }
-
-    .picture1::before {
-        width: 40px;
-        height: 30px;
-        bottom: 12px;
-    }
-
-    .picture1::after {
-        width: 35px;
-        height: 25px;
-        bottom: 12px;
-    }
-
-    .picture2 {
-        top: 25%;
-        left: 7%;
-
-        width: 70px;
-        height: 55px;
-
-        border-width: 5px;
-    }
-
-    .picture2::before {
-        top: 5px;
-        left: 12px;
-        font-size: 20px;
-    }
-
-    .picture2::after {
-        width: 48px;
-        left: 10px;
-        bottom: 11px;
-    }
-
-    .picture3 {
-        top: 5%;
-        right: 5%;
-
-        width: 70px;
-        height: 55px;
-
-        border-width: 5px;
-    }
-
-    .picture3::before {
-        width: 30px;
-        height: 30px;
-        top: 7px;
-        left: 18px;
-    }
-
-    .picture3::after {
-        width: 50px;
-        height: 22px;
-        left: 8px;
-    }
-
-
-    /* CLOCK */
-
-    .clock {
-        top: 6%;
-        left: 39%;
-
-        width: 65px;
-        height: 65px;
-
-        border-width: 6px;
-    }
-
-    .clock::before {
-        width: 3px;
-        height: 20px;
-
-        top: 12px;
-    }
-
-    .clock::after {
-        width: 3px;
-        height: 17px;
-
-        top: 15px;
-    }
-
-    .clock-guide {
-        top: 1.5%;
-
-        font-size: 10px;
-    }
-
-
-    /* BED */
-
-    .bed {
-        left: 4%;
-        bottom: 13%;
-
-        width: 55%;
-        height: 115px;
-
-        border-radius: 10px;
-    }
-
-    .bed::before {
-        left: -5px;
-        top: -22px;
-
-        width: 11px;
-        height: 115px;
-    }
-
-    .bed::after {
-        left: 7px;
-        right: 7px;
-
-        bottom: 8px;
-
-        height: 19px;
-    }
-
-    .mattress {
-        left: 6px;
-        top: -20px;
-
-        width: calc(100% - 12px);
-        height: 47px;
-
-        border-radius:
-            14px 14px 8px 8px;
-    }
-
-    .blanket {
-        left: 31%;
-        top: -3px;
-
-        width: 66%;
-        height: 62px;
-
-        border-radius:
-            0 0 12px 15px;
-    }
-
-    .blanket::before {
-        left: 10px;
-        top: 5px;
-
-        width: calc(100% - 20px);
-        height: 43px;
-    }
-
-    .blanket::after {
-        right: 8px;
-        width: 20px;
-        height: 50px;
-    }
-
-    .pillow {
-        left: 12px;
-        top: -13px;
-
-        width: 65px;
-        height: 29px;
-
-        border-radius:
-            11px 12px 9px 9px;
-    }
-
-    .pillow::before {
-        inset: 3px;
-    }
-
-    .pillow::after {
-        width: 23px;
-        height: 4px;
-
-        left: 20px;
-        top: 11px;
-    }
-
-    .bed-leg {
-        bottom: -19px;
-
-        width: 12px;
-        height: 20px;
-    }
-
-    .bed-leg1 {
-        left: 20px;
-    }
-
-    .bed-leg2 {
-        right: 20px;
-    }
-
-
-    /* PETS */
-
-    .pets {
-        left: 16%;
-        bottom: 9%;
-
-        width: 125px;
-        height: 45px;
-
-        transform: scale(.75);
-        transform-origin: bottom left;
-    }
-
-
-    /* BEDSIDE TABLE */
-
-    .bedside {
-        left: 1%;
-        bottom: 13%;
-
-        width: 65px;
-        height: 82px;
-
-        border-radius: 6px;
-    }
-
-    .bedside::before {
-        top: 22px;
-        left: 8px;
-
-        width: 49px;
-        height: 5px;
-
-        box-shadow:
-            0 25px 0 #3c2925;
-    }
-
-    .table-leg {
-        bottom: -20px;
-
-        width: 9px;
-        height: 22px;
-    }
-
-    .table-leg1 {
-        left: 9px;
-    }
-
-    .table-leg2 {
-        right: 9px;
-    }
-
-    .lamp {
-        left: 17px;
-        top: -42px;
-
-        width: 32px;
-        height: 39px;
-    }
-
-    .lamp::after {
-        width: 5px;
-        height: 13px;
-
-        left: 14px;
-        bottom: -13px;
-    }
-
-
-    /* EASEL */
-
-    .easel {
-        left: 53%;
-        bottom: 14%;
-
-        width: 100px;
-        height: 135px;
-
-        transform: scale(.8);
-        transform-origin: bottom left;
-    }
-
-
-    /* DESK */
-
-    .desk {
-        right: 3%;
-        bottom: 13%;
-
-        width: 43%;
-        height: 105px;
-
-        border-radius: 6px;
-    }
-
-    .desk-top {
-        top: -9px;
-        left: -6px;
-
-        width: calc(100% + 12px);
-        height: 16px;
-    }
-
-    .desk-leg {
-        bottom: -48px;
-
-        width: 13px;
-        height: 48px;
-    }
-
-    .desk-leg1 {
-        left: 15px;
-    }
-
-    .desk-leg2 {
-        right: 15px;
-    }
-
-
-    /* LAPTOP */
-
-    .laptop {
-        width: 90px;
-        height: 57px;
-
-        border-width: 4px;
-
-        top: -68px;
-        left: 50%;
-
-        transform: translateX(-50%);
-    }
-
-    .laptop::after {
-        width: 110px;
-        height: 6px;
-
-        bottom: -10px;
-        left: -13px;
-    }
-
-    .laptop-screen {
-        inset: 5px;
-    }
-
-    .laptop-screen::before {
-        top: 3px;
-        left: 4px;
-        right: 4px;
-
-        height: 9px;
-
-        font-size: 4px;
-
-        padding: 2px;
-    }
-
-    .laptop-screen::after {
-        left: 5px;
-        top: 17px;
-
-        font-size: 3px;
-        line-height: 5px;
-    }
-
-
-    /* PENCILS */
-
-    .pencils {
-        right: 12px;
-        top: -45px;
-
-        transform: scale(.7);
-        transform-origin: bottom right;
-    }
-
-
-    /* VASE */
-
-    .vase {
-        right: 30px;
-        top: -43px;
-
-        width: 28px;
-        height: 42px;
-    }
-
-    .flower {
-        width: 5px;
-        height: 42px;
-
-        bottom: 35px;
-        left: 11px;
-    }
-
-
-    /* GIRL */
-
-    .girl {
-        left: 43%;
-        bottom: 15%;
-
-        transform: scale(.72);
-        transform-origin: bottom center;
-    }
-
-
-    /* TIMER */
-
-    .timer {
-        top: auto;
-        right: 10px;
-        left: 10px;
-        bottom: 10px;
-
-        padding: 10px;
-
-        border-radius: 12px;
-    }
-
-    .timer-time {
-        font-size: 25px;
-        margin-bottom: 4px;
-    }
-
-    .timer button {
-        margin: 4px;
-        padding: 10px 14px;
-    }
-
-
-    /* MODALS */
-
-    .modal {
-        padding: 15px;
-    }
-
-    .modal-box {
-        width: 100%;
-        max-width: 340px;
-
-        padding: 24px 18px;
-
-        border-radius: 14px;
-    }
-
-    .modal-box h2 {
-        font-size: 21px;
-    }
-
-    .modal-box button {
-        display: block;
-
-        width: 100%;
-
-        margin: 8px 0;
-    }
-
-    input {
-        font-size: 16px;
-    }
-
-}
-
-
-/* =========================
-   VERY SMALL PHONES
-========================= */
-
-@media (max-width: 380px) {
-
-    .window {
-        width: 135px;
-        height: 125px;
-    }
-
-    .clock {
-        left: 37%;
-        width: 58px;
-        height: 58px;
-    }
-
-    .bed {
-        width: 56%;
-    }
-
-    .desk {
-        width: 41%;
-    }
-
-    .easel {
-        left: 50%;
-        transform: scale(.68);
-    }
-
-    .girl {
-        transform: scale(.62);
-    }
-
-    .pets {
-        transform: scale(.65);
-    }
-
-}
-
-
-/* =========================
-   LANDSCAPE PHONES
-========================= */
-
-@media (max-width: 900px) and (orientation: landscape) {
-
-    .window {
-        width: 190px;
-        height: 170px;
-    }
-
-    .bed {
-        width: 42%;
-        height: 125px;
-    }
-
-    .desk {
-        width: 38%;
-        height: 115px;
-    }
-
-    .easel {
-        left: 48%;
-        transform: scale(.75);
-    }
-
-    .girl {
-        bottom: 12%;
-        transform: scale(.65);
-    }
-
-    .pets {
-        bottom: 7%;
-    }
-
-    .clock-guide {
-        top: 2%;
-    }
-
-}
-
-
-/* =========================
-   TOUCH DEVICES
-========================= */
-
-@media (hover: none) {
-
-    button:hover {
-        background: #66483d;
-    }
-
 }
 
 </style>
@@ -2982,9 +1714,7 @@ input {
 
 <body>
 
-
 <div class="room">
-
 
     <div class="wall"></div>
 
@@ -3003,7 +1733,6 @@ input {
 
         <div class="cloud cloud2"></div>
 
-
         <div class="day-trees">
 
             <div class="day-tree day-tree1"></div>
@@ -3012,7 +1741,6 @@ input {
             <div class="day-tree day-tree4"></div>
 
         </div>
-
 
         <div class="star star1">✦</div>
         <div class="star star2">✦</div>
@@ -3026,9 +1754,7 @@ input {
     <!-- WALL ART -->
 
     <div class="picture picture1"></div>
-
     <div class="picture picture2"></div>
-
     <div class="picture picture3"></div>
 
 
@@ -3046,13 +1772,10 @@ input {
     <div class="bed">
 
         <div class="mattress"></div>
-
         <div class="blanket"></div>
-
         <div class="pillow"></div>
 
         <div class="bed-leg bed-leg1"></div>
-
         <div class="bed-leg bed-leg2"></div>
 
     </div>
@@ -3065,7 +1788,6 @@ input {
         <div class="cat">
 
             <div class="cat-face"></div>
-
             <div class="cat-tail"></div>
 
         </div>
@@ -3082,7 +1804,6 @@ input {
             <div class="dog-tail"></div>
 
             <div class="dog-leg dog-leg1"></div>
-
             <div class="dog-leg dog-leg2"></div>
 
         </div>
@@ -3097,7 +1818,6 @@ input {
         <div class="lamp"></div>
 
         <div class="table-leg table-leg1"></div>
-
         <div class="table-leg table-leg2"></div>
 
     </div>
@@ -3107,54 +1827,37 @@ input {
 
     <div class="easel">
 
-
         <div class="easel-canvas">
 
             <div class="painting-sky"></div>
-
             <div class="painting-sun"></div>
-
             <div class="mountain1"></div>
-
             <div class="mountain2"></div>
-
             <div class="mountain-snow"></div>
-
             <div class="painting-ground"></div>
-
             <div class="painting-tree"></div>
 
         </div>
 
-
         <div class="easel-shelf"></div>
 
-
         <div class="easel-leg easel-leg-left"></div>
-
         <div class="easel-leg easel-leg-right"></div>
-
         <div class="easel-leg easel-leg-center"></div>
 
-
-        <!-- ART SUPPLIES -->
 
         <div class="art-supplies">
 
             <div class="palette"></div>
 
             <div class="paint-tube paint-tube1"></div>
-
             <div class="paint-tube paint-tube2"></div>
-
             <div class="paint-tube paint-tube3"></div>
 
             <div class="brush brush1"></div>
-
             <div class="brush brush2"></div>
 
         </div>
-
 
     </div>
 
@@ -3163,11 +1866,8 @@ input {
 
     <div class="desk">
 
-
         <div class="desk-top"></div>
 
-
-        <!-- LAPTOP -->
 
         <div class="laptop">
 
@@ -3176,20 +1876,14 @@ input {
         </div>
 
 
-        <!-- PENCILS -->
-
         <div class="pencils">
 
             <div class="pencil pencil1"></div>
-
             <div class="pencil pencil2"></div>
-
             <div class="pencil pencil3"></div>
 
         </div>
 
-
-        <!-- VASE -->
 
         <div class="vase">
 
@@ -3199,9 +1893,7 @@ input {
 
 
         <div class="desk-leg desk-leg1"></div>
-
         <div class="desk-leg desk-leg2"></div>
-
 
     </div>
 
@@ -3210,9 +1902,7 @@ input {
 
     <div class="girl" id="girl">
 
-
         <div class="hair"></div>
-
 
         <div class="head">
 
@@ -3220,27 +1910,18 @@ input {
 
         </div>
 
-
         <div class="body"></div>
 
-
         <div class="arm arm-left"></div>
-
         <div class="arm arm-right"></div>
 
-
         <div class="leg leg-left"></div>
-
         <div class="leg leg-right"></div>
 
-
         <div class="shoe shoe-left"></div>
-
         <div class="shoe shoe-right"></div>
 
-
     </div>
-
 
 </div>
 
@@ -3328,14 +2009,12 @@ input {
         00:00
     </div>
 
-
     <button
         onclick="pauseTimer()"
         id="pauseButton"
     >
         Pause
     </button>
-
 
     <button onclick="endSession()">
         End Session
@@ -3346,10 +2025,9 @@ input {
 
 <script>
 
-
-/* =========================
-   VARIABLES
-========================= */
+/* =====================================================
+   BASIC VARIABLES
+===================================================== */
 
 let selectedActivity = null;
 
@@ -3360,19 +2038,991 @@ let remainingSeconds = 0;
 let paused = false;
 
 
-/* =========================
+/* =====================================================
+   WEB AUDIO MUSIC SYSTEM
+===================================================== */
+
+let musicContext = null;
+
+let musicMaster = null;
+
+let musicFilter = null;
+
+let musicTimer = null;
+
+let musicStarted = false;
+
+let musicPaused = false;
+
+let musicGeneration = 0;
+
+
+/* =====================================================
+   NOTE FREQUENCIES
+===================================================== */
+
+const notes = {
+
+    C2: 65.41,
+    G2: 98.00,
+    A2: 110.00,
+
+    C3: 130.81,
+    D3: 146.83,
+    E3: 164.81,
+    F3: 174.61,
+    G3: 196.00,
+    A3: 220.00,
+    B3: 246.94,
+
+    C4: 261.63,
+    D4: 293.66,
+    E4: 329.63,
+    F4: 349.23,
+    G4: 392.00,
+    A4: 440.00,
+    B4: 493.88,
+
+    C5: 523.25,
+    D5: 587.33,
+    E5: 659.25,
+    F5: 698.46,
+    G5: 783.99,
+
+    A5: 880.00,
+    B5: 987.77
+
+};
+
+
+/* =====================================================
+   WORK MUSIC
+   Slow and warm
+===================================================== */
+
+const workTempo = 68;
+
+const workBeat =
+    60 / workTempo;
+
+const workChordLength =
+    workBeat * 4;
+
+
+const workChords = [
+
+    {
+        bass: notes.A2,
+        chord: [
+            notes.A3,
+            notes.C4,
+            notes.E4,
+            notes.G4
+        ]
+    },
+
+    {
+        bass: notes.F3,
+        chord: [
+            notes.F3,
+            notes.A3,
+            notes.C4,
+            notes.E4
+        ]
+    },
+
+    {
+        bass: notes.C3,
+        chord: [
+            notes.C3,
+            notes.E3,
+            notes.G3,
+            notes.B3
+        ]
+    },
+
+    {
+        bass: notes.G2,
+        chord: [
+            notes.G3,
+            notes.B3,
+            notes.D4,
+            notes.E4
+        ]
+    }
+
+];
+
+
+const workMelodies = [
+
+    [
+        { note: notes.E5, beat: .5 },
+        { note: notes.C5, beat: 1.5 },
+        { note: notes.A4, beat: 3 }
+    ],
+
+    [
+        { note: notes.C5, beat: .75 },
+        { note: notes.A4, beat: 2 },
+        { note: notes.G4, beat: 3.25 }
+    ],
+
+    [
+        { note: notes.G4, beat: .5 },
+        { note: notes.B4, beat: 1.75 },
+        { note: notes.E5, beat: 3 }
+    ],
+
+    [
+        { note: notes.D5, beat: 1 },
+        { note: notes.B4, beat: 2.25 },
+        { note: notes.G4, beat: 3.5 }
+    ]
+
+];
+
+
+/* =====================================================
+   HOBBY MUSIC
+   Brighter, plucked, slightly more playful
+===================================================== */
+
+const hobbyTempo = 82;
+
+const hobbyBeat =
+    60 / hobbyTempo;
+
+const hobbyChordLength =
+    hobbyBeat * 4;
+
+
+const hobbyChords = [
+
+    {
+        bass: notes.C3,
+        chord: [
+            notes.C4,
+            notes.E4,
+            notes.G4,
+            notes.B4
+        ]
+    },
+
+    {
+        bass: notes.A2,
+        chord: [
+            notes.A3,
+            notes.C4,
+            notes.E4,
+            notes.G4
+        ]
+    },
+
+    {
+        bass: notes.F3,
+        chord: [
+            notes.F3,
+            notes.A3,
+            notes.C4,
+            notes.E4
+        ]
+    },
+
+    {
+        bass: notes.G2,
+        chord: [
+            notes.G3,
+            notes.B3,
+            notes.D4,
+            notes.G4
+        ]
+    }
+
+];
+
+
+const hobbyMelodies = [
+
+    [
+        { note: notes.G5, beat: 0 },
+        { note: notes.E5, beat: .75 },
+        { note: notes.G5, beat: 1.5 },
+        { note: notes.B5, beat: 2.5 },
+        { note: notes.G5, beat: 3.25 }
+    ],
+
+    [
+        { note: notes.E5, beat: .25 },
+        { note: notes.C5, beat: 1 },
+        { note: notes.E5, beat: 2 },
+        { note: notes.A5, beat: 3.25 }
+    ],
+
+    [
+        { note: notes.A4, beat: .5 },
+        { note: notes.C5, beat: 1.25 },
+        { note: notes.E5, beat: 2.25 },
+        { note: notes.C5, beat: 3.25 }
+    ],
+
+    [
+        { note: notes.B4, beat: .5 },
+        { note: notes.D5, beat: 1.25 },
+        { note: notes.G5, beat: 2.25 },
+        { note: notes.D5, beat: 3.5 }
+    ]
+
+];
+
+
+/* =====================================================
+   CREATE AUDIO CONTEXT
+===================================================== */
+
+function createMusic() {
+
+    if (musicContext) {
+        return;
+    }
+
+
+    const AudioContext =
+        window.AudioContext ||
+        window.webkitAudioContext;
+
+
+    if (!AudioContext) {
+        return;
+    }
+
+
+    musicContext =
+        new AudioContext();
+
+
+    musicMaster =
+        musicContext.createGain();
+
+
+    musicMaster.gain.value = 0;
+
+
+    musicFilter =
+        musicContext.createBiquadFilter();
+
+
+    musicFilter.type =
+        "lowpass";
+
+
+    musicFilter.frequency.value =
+        3400;
+
+
+    musicFilter.Q.value =
+        0.5;
+
+
+    musicMaster
+        .connect(musicFilter);
+
+
+    musicFilter
+        .connect(
+            musicContext.destination
+        );
+
+}
+
+
+/* =====================================================
+   PLAY ONE NOTE
+===================================================== */
+
+function playMusicNote(
+    frequency,
+    startTime,
+    duration,
+    volume,
+    type = "triangle"
+) {
+
+    if (!musicContext) {
+        return;
+    }
+
+
+    const oscillator =
+        musicContext.createOscillator();
+
+
+    const gain =
+        musicContext.createGain();
+
+
+    oscillator.type =
+        type;
+
+
+    oscillator.frequency.value =
+        frequency;
+
+
+    oscillator.connect(gain);
+
+    gain.connect(musicMaster);
+
+
+    gain.gain.setValueAtTime(
+        0,
+        startTime
+    );
+
+
+    gain.gain.linearRampToValueAtTime(
+        volume,
+        startTime + 0.06
+    );
+
+
+    gain.gain.setValueAtTime(
+        volume,
+        startTime + duration - 0.15
+    );
+
+
+    gain.gain.exponentialRampToValueAtTime(
+        0.001,
+        startTime + duration
+    );
+
+
+    oscillator.start(startTime);
+
+    oscillator.stop(
+        startTime + duration
+    );
+
+}
+
+
+/* =====================================================
+   WORK CHORD
+===================================================== */
+
+function playWorkChord(
+    chord,
+    startTime
+) {
+
+    chord.chord.forEach(
+        function(freq, index) {
+
+            playMusicNote(
+                freq,
+                startTime + index * .015,
+                workChordLength * .92,
+                .025,
+                "triangle"
+            );
+
+        }
+    );
+
+
+    chord.chord.forEach(
+        function(freq, index) {
+
+            playMusicNote(
+                freq * 2,
+                startTime +
+                .04 +
+                index * .012,
+                workChordLength * .7,
+                .005,
+                "sine"
+            );
+
+        }
+    );
+
+
+    playMusicNote(
+        chord.bass,
+        startTime,
+        workChordLength * .85,
+        .035,
+        "sine"
+    );
+
+
+    playMusicNote(
+        chord.bass,
+        startTime +
+        workBeat * 2,
+        workBeat * 1.5,
+        .018,
+        "sine"
+    );
+
+}
+
+
+/* =====================================================
+   WORK MELODY
+===================================================== */
+
+function playWorkMelody(
+    chordIndex,
+    startTime
+) {
+
+    const melody =
+        workMelodies[chordIndex];
+
+
+    melody.forEach(
+        function(item, index) {
+
+            const tinyOffset =
+                index % 2 === 0
+                    ? 0
+                    : workBeat * .025;
+
+
+            playMusicNote(
+                item.note,
+                startTime +
+                item.beat * workBeat +
+                tinyOffset,
+                workBeat * .7,
+                .018,
+                "sine"
+            );
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   HOBBY CHORD
+===================================================== */
+
+function playHobbyChord(
+    chord,
+    startTime
+) {
+
+    /*
+        Shorter notes create the
+        plucked / handmade feeling.
+    */
+
+    chord.chord.forEach(
+        function(freq, index) {
+
+            playMusicNote(
+                freq,
+                startTime +
+                index * .018,
+                hobbyChordLength * .72,
+                .018,
+                "triangle"
+            );
+
+        }
+    );
+
+
+    /*
+        Warm bass.
+    */
+
+    playMusicNote(
+        chord.bass,
+        startTime,
+        hobbyBeat * 2.5,
+        .025,
+        "sine"
+    );
+
+
+    /*
+        Little bass echo.
+    */
+
+    playMusicNote(
+        chord.bass,
+        startTime +
+        hobbyBeat * 2,
+        hobbyBeat * 1.4,
+        .012,
+        "sine"
+    );
+
+}
+
+
+/* =====================================================
+   HOBBY MELODY
+===================================================== */
+
+function playHobbyMelody(
+    chordIndex,
+    startTime
+) {
+
+    const melody =
+        hobbyMelodies[chordIndex];
+
+
+    melody.forEach(
+        function(item, index) {
+
+            /*
+                These notes are shorter,
+                creating a soft plucked
+                / kalimba-like character.
+            */
+
+            playMusicNote(
+                item.note,
+                startTime +
+                item.beat * hobbyBeat,
+                hobbyBeat * .38,
+                .028,
+                index % 3 === 0
+                    ? "sine"
+                    : "triangle"
+            );
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   SCHEDULE WORK MUSIC
+===================================================== */
+
+function scheduleWorkMusic(
+    generation
+) {
+
+    if (!musicContext) {
+        return;
+    }
+
+    if (musicPaused) {
+        return;
+    }
+
+    if (generation !== musicGeneration) {
+        return;
+    }
+
+
+    const now =
+        musicContext.currentTime;
+
+
+    workChords.forEach(
+        function(chord, index) {
+
+            const startTime =
+                now +
+                index * workChordLength;
+
+
+            playWorkChord(
+                chord,
+                startTime
+            );
+
+
+            playWorkMelody(
+                index,
+                startTime
+            );
+
+        }
+    );
+
+
+    musicTimer =
+        setTimeout(
+            function() {
+
+                scheduleWorkMusic(
+                    generation
+                );
+
+            },
+            workChordLength * 4 * 1000 - 1000
+        );
+
+}
+
+
+/* =====================================================
+   SCHEDULE HOBBY MUSIC
+===================================================== */
+
+function scheduleHobbyMusic(
+    generation
+) {
+
+    if (!musicContext) {
+        return;
+    }
+
+    if (musicPaused) {
+        return;
+    }
+
+    if (generation !== musicGeneration) {
+        return;
+    }
+
+
+    const now =
+        musicContext.currentTime;
+
+
+    hobbyChords.forEach(
+        function(chord, index) {
+
+            const startTime =
+                now +
+                index * hobbyChordLength;
+
+
+            playHobbyChord(
+                chord,
+                startTime
+            );
+
+
+            playHobbyMelody(
+                index,
+                startTime
+            );
+
+        }
+    );
+
+
+    musicTimer =
+        setTimeout(
+            function() {
+
+                scheduleHobbyMusic(
+                    generation
+                );
+
+            },
+            hobbyChordLength * 4 * 1000 - 1000
+        );
+
+}
+
+
+/* =====================================================
+   START WORK MUSIC
+===================================================== */
+
+function startWorkMusic() {
+
+    createMusic();
+
+
+    if (!musicContext) {
+        return;
+    }
+
+
+    musicGeneration++;
+
+
+    const generation =
+        musicGeneration;
+
+
+    clearTimeout(
+        musicTimer
+    );
+
+
+    musicTimer = null;
+
+
+    musicPaused = false;
+
+    musicStarted = true;
+
+
+    musicContext.resume();
+
+
+    const now =
+        musicContext.currentTime;
+
+
+    musicMaster.gain.cancelScheduledValues(
+        now
+    );
+
+
+    musicMaster.gain.setValueAtTime(
+        0,
+        now
+    );
+
+
+    musicMaster.gain.linearRampToValueAtTime(
+        .42,
+        now + 2
+    );
+
+
+    scheduleWorkMusic(
+        generation
+    );
+
+}
+
+
+/* =====================================================
+   START HOBBY MUSIC
+===================================================== */
+
+function startHobbyMusic() {
+
+    createMusic();
+
+
+    if (!musicContext) {
+        return;
+    }
+
+
+    musicGeneration++;
+
+
+    const generation =
+        musicGeneration;
+
+
+    clearTimeout(
+        musicTimer
+    );
+
+
+    musicTimer = null;
+
+
+    musicPaused = false;
+
+    musicStarted = true;
+
+
+    musicContext.resume();
+
+
+    const now =
+        musicContext.currentTime;
+
+
+    musicMaster.gain.cancelScheduledValues(
+        now
+    );
+
+
+    musicMaster.gain.setValueAtTime(
+        0,
+        now
+    );
+
+
+    /*
+        Hobby music is slightly
+        quieter and brighter.
+    */
+
+    musicMaster.gain.linearRampToValueAtTime(
+        .34,
+        now + 1.8
+    );
+
+
+    scheduleHobbyMusic(
+        generation
+    );
+
+}
+
+
+/* =====================================================
+   PAUSE MUSIC
+===================================================== */
+
+function pauseWorkMusic() {
+
+    if (!musicContext) {
+        return;
+    }
+
+
+    musicPaused = true;
+
+
+    clearTimeout(
+        musicTimer
+    );
+
+
+    musicTimer = null;
+
+
+    musicContext.suspend();
+
+}
+
+
+/* =====================================================
+   RESUME MUSIC
+===================================================== */
+
+function resumeWorkMusic() {
+
+    if (!musicContext) {
+        return;
+    }
+
+
+    musicPaused = false;
+
+
+    musicContext.resume();
+
+
+    /*
+        Start scheduling fresh.
+        The old scheduled notes are
+        already frozen with the context.
+    */
+
+    musicGeneration++;
+
+
+    const generation =
+        musicGeneration;
+
+
+    if (selectedActivity === "work") {
+
+        scheduleWorkMusic(
+            generation
+        );
+
+    }
+
+
+    if (selectedActivity === "hobby") {
+
+        scheduleHobbyMusic(
+            generation
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   STOP MUSIC
+===================================================== */
+
+function stopWorkMusic() {
+
+    if (!musicContext) {
+        return;
+    }
+
+
+    musicGeneration++;
+
+
+    clearTimeout(
+        musicTimer
+    );
+
+
+    musicTimer = null;
+
+
+    const now =
+        musicContext.currentTime;
+
+
+    musicMaster.gain.cancelScheduledValues(
+        now
+    );
+
+
+    musicMaster.gain.setValueAtTime(
+        musicMaster.gain.value,
+        now
+    );
+
+
+    musicMaster.gain.linearRampToValueAtTime(
+        0,
+        now + .7
+    );
+
+
+    musicStarted = false;
+
+    musicPaused = false;
+
+
+    setTimeout(
+        function() {
+
+            if (musicContext) {
+
+                musicContext.suspend();
+
+            }
+
+        },
+        800
+    );
+
+}
+
+
+/* =====================================================
    DAY / NIGHT
-========================= */
+===================================================== */
 
 document
     .getElementById("window")
-    .addEventListener("click", function() {
+    .addEventListener(
+        "click",
+        function() {
 
-        document
-            .getElementById("timeModal")
-            .style.display = "flex";
+            document
+                .getElementById("timeModal")
+                .style.display = "flex";
 
-    });
+        }
+    );
 
 
 function setTime(time) {
@@ -3400,11 +3050,14 @@ function setTime(time) {
 
         moon.style.display = "none";
 
-        stars.forEach(function(star) {
 
-            star.style.display = "none";
+        stars.forEach(
+            function(star) {
 
-        });
+                star.style.display = "none";
+
+            }
+        );
 
     }
 
@@ -3415,39 +3068,46 @@ function setTime(time) {
 
         moon.style.display = "block";
 
-        stars.forEach(function(star) {
 
-            star.style.display = "block";
+        stars.forEach(
+            function(star) {
 
-        });
+                star.style.display = "block";
+
+            }
+        );
 
     }
 
 }
 
 
-/* =========================
-   CLOCK CLICK
-========================= */
+/* =====================================================
+   CLOCK
+===================================================== */
 
 document
     .getElementById("clock")
-    .addEventListener("click", function() {
+    .addEventListener(
+        "click",
+        function() {
 
-        document
-            .getElementById("activityModal")
-            .style.display = "flex";
+            document
+                .getElementById("activityModal")
+                .style.display = "flex";
 
-    });
+        }
+    );
 
 
-/* =========================
+/* =====================================================
    CHOOSE ACTIVITY
-========================= */
+===================================================== */
 
 function chooseActivity(activity) {
 
-    selectedActivity = activity;
+    selectedActivity =
+        activity;
 
 
     document
@@ -3462,9 +3122,9 @@ function chooseActivity(activity) {
 }
 
 
-/* =========================
+/* =====================================================
    START SESSION
-========================= */
+===================================================== */
 
 function startSession() {
 
@@ -3494,6 +3154,13 @@ function startSession() {
     }
 
 
+    /*
+        Kill any previous soundtrack.
+    */
+
+    stopWorkMusic();
+
+
     remainingSeconds =
         minutes * 60;
 
@@ -3507,30 +3174,83 @@ function startSession() {
         document.getElementById("girl");
 
 
-    girl.classList.remove("working");
+    girl.classList.remove(
+        "working"
+    );
+
+    girl.classList.remove(
+        "hobbying"
+    );
 
 
-    /* WORK */
+    /* =====================================
+       WORK
+    ===================================== */
 
-    if (selectedActivity === "work") {
+    if (
+        selectedActivity === "work"
+    ) {
 
         girl.style.left = "68%";
 
 
-        setTimeout(function() {
+        setTimeout(
+            function() {
 
-            girl.classList.add("working");
+                if (
+                    selectedActivity === "work" &&
+                    !paused &&
+                    remainingSeconds > 0
+                ) {
 
-        }, 1800);
+                    girl.classList.add(
+                        "working"
+                    );
+
+
+                    startWorkMusic();
+
+                }
+
+            },
+            1800
+        );
 
     }
 
 
-    /* HOBBY */
+    /* =====================================
+       HOBBY
+    ===================================== */
 
-    if (selectedActivity === "hobby") {
+    if (
+        selectedActivity === "hobby"
+    ) {
 
         girl.style.left = "34%";
+
+
+        setTimeout(
+            function() {
+
+                if (
+                    selectedActivity === "hobby" &&
+                    !paused &&
+                    remainingSeconds > 0
+                ) {
+
+                    girl.classList.add(
+                        "hobbying"
+                    );
+
+
+                    startHobbyMusic();
+
+                }
+
+            },
+            1800
+        );
 
     }
 
@@ -3551,38 +3271,42 @@ function startSession() {
     updateTimerDisplay();
 
 
-    clearInterval(timerInterval);
+    clearInterval(
+        timerInterval
+    );
 
 
     timerInterval =
-        setInterval(function() {
+        setInterval(
+            function() {
+
+                if (!paused) {
+
+                    remainingSeconds--;
+
+                    updateTimerDisplay();
 
 
-            if (!paused) {
+                    if (
+                        remainingSeconds <= 0
+                    ) {
 
-                remainingSeconds--;
+                        sessionFinished();
 
-
-                updateTimerDisplay();
-
-
-                if (remainingSeconds <= 0) {
-
-                    sessionFinished();
+                    }
 
                 }
 
-            }
-
-
-        }, 1000);
+            },
+            1000
+        );
 
 }
 
 
-/* =========================
+/* =====================================================
    TIMER DISPLAY
-========================= */
+===================================================== */
 
 function updateTimerDisplay() {
 
@@ -3597,11 +3321,17 @@ function updateTimerDisplay() {
 
 
     minutes =
-        String(minutes).padStart(2, "0");
+        String(minutes).padStart(
+            2,
+            "0"
+        );
 
 
     seconds =
-        String(seconds).padStart(2, "0");
+        String(seconds).padStart(
+            2,
+            "0"
+        );
 
 
     document
@@ -3612,41 +3342,90 @@ function updateTimerDisplay() {
 }
 
 
-/* =========================
-   PAUSE
-========================= */
+/* =====================================================
+   PAUSE / RESUME
+===================================================== */
 
 function pauseTimer() {
 
-    paused = !paused;
+    paused =
+        !paused;
 
 
     const button =
-        document.getElementById("pauseButton");
+        document.getElementById(
+            "pauseButton"
+        );
 
 
     if (paused) {
 
-        button.textContent = "Resume";
+        button.textContent =
+            "Resume";
+
+
+        if (musicStarted) {
+
+            pauseWorkMusic();
+
+        }
 
     } else {
 
-        button.textContent = "Pause";
+        button.textContent =
+            "Pause";
+
+
+        if (
+            selectedActivity === "work" ||
+            selectedActivity === "hobby"
+        ) {
+
+            if (musicStarted) {
+
+                resumeWorkMusic();
+
+            }
+
+        }
 
     }
 
 }
 
 
-/* =========================
+/* =====================================================
    END SESSION
-========================= */
+===================================================== */
 
 function endSession() {
 
-    clearInterval(timerInterval);
+    clearInterval(
+        timerInterval
+    );
 
-    timerInterval = null;
+
+    timerInterval =
+        null;
+
+
+    stopWorkMusic();
+
+
+    const girl =
+        document.getElementById(
+            "girl"
+        );
+
+
+    girl.classList.remove(
+        "working"
+    );
+
+
+    girl.classList.remove(
+        "hobbying"
+    );
 
 
     document
@@ -3654,30 +3433,48 @@ function endSession() {
         .style.display = "none";
 
 
-    document
-        .getElementById("girl")
-        .classList.remove("working");
+    girl.style.left =
+        "48%";
 
 
-    document
-        .getElementById("girl")
-        .style.left = "48%";
-
-
-    remainingSeconds = 0;
+    remainingSeconds =
+        0;
 
 }
 
 
-/* =========================
+/* =====================================================
    SESSION FINISHED
-========================= */
+===================================================== */
 
 function sessionFinished() {
 
-    clearInterval(timerInterval);
+    clearInterval(
+        timerInterval
+    );
 
-    timerInterval = null;
+
+    timerInterval =
+        null;
+
+
+    stopWorkMusic();
+
+
+    const girl =
+        document.getElementById(
+            "girl"
+        );
+
+
+    girl.classList.remove(
+        "working"
+    );
+
+
+    girl.classList.remove(
+        "hobbying"
+    );
 
 
     document
@@ -3685,36 +3482,34 @@ function sessionFinished() {
         .style.display = "none";
 
 
-    document
-        .getElementById("girl")
-        .classList.remove("working");
-
-
-    document
-        .getElementById("girl")
-        .style.left = "48%";
+    girl.style.left =
+        "48%";
 
 
     playChime();
 
 
-    setTimeout(function() {
+    setTimeout(
+        function() {
 
-        alert(
-            "Focus session complete ✦"
-        );
+            alert(
+                "Focus session complete ✦"
+            );
 
-    }, 300);
+        },
+        300
+    );
 
 
-    remainingSeconds = 0;
+    remainingSeconds =
+        0;
 
 }
 
 
-/* =========================
-   THREE NOTE CHIME
-========================= */
+/* =====================================================
+   COMPLETION CHIME
+===================================================== */
 
 function playChime() {
 
@@ -3723,14 +3518,16 @@ function playChime() {
         window.webkitAudioContext;
 
 
-    if (!AudioContext) return;
+    if (!AudioContext) {
+        return;
+    }
 
 
     const audioContext =
         new AudioContext();
 
 
-    const notes = [
+    const chimeNotes = [
 
         523.25,
         659.25,
@@ -3739,63 +3536,69 @@ function playChime() {
     ];
 
 
-    notes.forEach(function(freq, index) {
+    chimeNotes.forEach(
+        function(freq, index) {
+
+            const oscillator =
+                audioContext.createOscillator();
 
 
-        const oscillator =
-            audioContext.createOscillator();
+            const gain =
+                audioContext.createGain();
 
 
-        const gain =
-            audioContext.createGain();
+            oscillator.type =
+                "sine";
 
 
-        oscillator.type = "sine";
+            oscillator.frequency.value =
+                freq;
 
 
-        oscillator.frequency.value =
-            freq;
+            oscillator.connect(
+                gain
+            );
 
 
-        oscillator.connect(gain);
+            gain.connect(
+                audioContext.destination
+            );
 
 
-        gain.connect(
-            audioContext.destination
-        );
+            const startTime =
+                audioContext.currentTime +
+                index * .22;
 
 
-        const startTime =
-            audioContext.currentTime +
-            index * 0.22;
+            gain.gain.setValueAtTime(
+                0,
+                startTime
+            );
 
 
-        gain.gain.setValueAtTime(
-            0,
-            startTime
-        );
+            gain.gain.linearRampToValueAtTime(
+                .18,
+                startTime + .03
+            );
 
 
-        gain.gain.linearRampToValueAtTime(
-            0.18,
-            startTime + 0.03
-        );
+            gain.gain.exponentialRampToValueAtTime(
+                .001,
+                startTime + .6
+            );
 
 
-        gain.gain.exponentialRampToValueAtTime(
-            0.001,
-            startTime + 0.6
-        );
+            oscillator.start(
+                startTime
+            );
 
 
-        oscillator.start(startTime);
+            oscillator.stop(
+                startTime + .6
+            );
 
-
-        oscillator.stop(
-            startTime + 0.6
-        );
-
-    });
+        }
+    );
 
 }
 
