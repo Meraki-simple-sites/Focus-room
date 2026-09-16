@@ -1,0 +1,3126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Lofi Focus Room</title>
+
+<style>
+
+/* =========================
+   GENERAL
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: Georgia, serif;
+    background: #1b1412;
+}
+
+.room {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background:
+        linear-gradient(
+            to bottom,
+            #3a2928 0%,
+            #4b3430 72%,
+            #241b18 72%,
+            #241b18 100%
+        );
+}
+
+
+/* =========================
+   WALL
+========================= */
+
+.wall {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 72%;
+
+    background:
+        radial-gradient(
+            circle at 30% 20%,
+            rgba(255,255,255,.035),
+            transparent 35%
+        ),
+        linear-gradient(
+            #40302e,
+            #352624
+        );
+}
+
+
+/* =========================
+   FLOOR
+========================= */
+
+.floor {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 28%;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            #251b18 0px,
+            #251b18 90px,
+            #2c201c 92px,
+            #251b18 180px
+        );
+}
+
+
+/* =========================
+   WINDOW
+========================= */
+
+.window {
+    position: absolute;
+    top: 8%;
+    left: 52%;
+    width: 300px;
+    height: 270px;
+
+    background:
+        linear-gradient(
+            #101b31,
+            #172542
+        );
+
+    border: 12px solid #4a342d;
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.45),
+        inset 0 0 20px rgba(0,0,0,.5);
+
+    cursor: pointer;
+
+    transition:
+        background 1s ease;
+
+    z-index: 3;
+}
+
+.window::before {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 0;
+
+    height: 100%;
+    width: 7px;
+
+    background: #4a342d;
+
+    transform:
+        translateX(-50%);
+}
+
+.window::after {
+    content: "";
+
+    position: absolute;
+
+    top: 50%;
+    left: 0;
+
+    width: 100%;
+    height: 7px;
+
+    background: #4a342d;
+
+    transform:
+        translateY(-50%);
+}
+
+
+/* DAYTIME WINDOW */
+
+.window.day {
+
+    background:
+        linear-gradient(
+            to bottom,
+            #6f9fbd 0%,
+            #a9c7d2 58%,
+            #d6d1b9 100%
+        );
+}
+
+
+/* SUN */
+
+.sun {
+    display: none;
+
+    position: absolute;
+
+    width: 65px;
+    height: 65px;
+
+    border-radius: 50%;
+
+    background: #f1d27c;
+
+    top: 38px;
+    right: 42px;
+
+    box-shadow:
+        0 0 30px rgba(241,210,124,.6);
+}
+
+.window.day .sun {
+    display: block;
+}
+
+
+/* CLOUDS */
+
+.cloud {
+    display: none;
+
+    position: absolute;
+
+    width: 65px;
+    height: 20px;
+
+    background: rgba(240,240,230,.7);
+
+    border-radius: 20px;
+}
+
+.cloud::before {
+    content: "";
+
+    position: absolute;
+
+    width: 27px;
+    height: 27px;
+
+    left: 10px;
+    top: -13px;
+
+    border-radius: 50%;
+
+    background: rgba(240,240,230,.7);
+}
+
+.cloud::after {
+    content: "";
+
+    position: absolute;
+
+    width: 22px;
+    height: 22px;
+
+    right: 10px;
+    top: -9px;
+
+    border-radius: 50%;
+
+    background: rgba(240,240,230,.7);
+}
+
+.cloud1 {
+    top: 55px;
+    left: 35px;
+}
+
+.cloud2 {
+    top: 135px;
+    left: 145px;
+    transform: scale(.75);
+}
+
+.window.day .cloud {
+    display: block;
+}
+
+
+/* DISTANT DAY TREES */
+
+.day-trees {
+    display: none;
+
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 75px;
+}
+
+.window.day .day-trees {
+    display: block;
+}
+
+.day-tree {
+    position: absolute;
+
+    bottom: 0;
+
+    width: 65px;
+    height: 75px;
+
+    background: #4d674f;
+
+    clip-path:
+        polygon(
+            50% 0%,
+            85% 35%,
+            70% 35%,
+            100% 70%,
+            75% 70%,
+            100% 100%,
+            0% 100%,
+            25% 70%,
+            0% 70%,
+            30% 35%,
+            15% 35%
+        );
+}
+
+.day-tree1 {
+    left: 10px;
+    transform: scale(.8);
+}
+
+.day-tree2 {
+    left: 70px;
+    transform: scale(1.1);
+}
+
+.day-tree3 {
+    right: 55px;
+    transform: scale(.9);
+}
+
+.day-tree4 {
+    right: 5px;
+    transform: scale(.7);
+}
+
+
+/* MOON */
+
+.moon {
+    position: absolute;
+
+    width: 75px;
+    height: 75px;
+
+    border-radius: 50%;
+
+    background: #eee5c9;
+
+    top: 35px;
+    right: 48px;
+
+    box-shadow:
+        0 0 30px rgba(238,229,201,.3);
+}
+
+
+/* STARS */
+
+.star {
+    position: absolute;
+
+    color: #eee5c9;
+
+    font-size: 9px;
+
+    opacity: .8;
+}
+
+.star1 {
+    top: 40px;
+    left: 40px;
+}
+
+.star2 {
+    top: 100px;
+    left: 100px;
+}
+
+.star3 {
+    top: 55px;
+    right: 130px;
+}
+
+.star4 {
+    top: 155px;
+    right: 50px;
+}
+
+.star5 {
+    bottom: 55px;
+    left: 120px;
+}
+
+
+/* =========================
+   CLOCK
+========================= */
+
+.clock {
+    position: absolute;
+
+    top: 7%;
+    left: 38%;
+
+    width: 95px;
+    height: 95px;
+
+    border-radius: 50%;
+
+    background: #eadfc9;
+
+    border: 8px solid #51382f;
+
+    box-shadow:
+        0 7px 15px rgba(0,0,0,.3);
+
+    cursor: pointer;
+
+    z-index: 10;
+}
+
+.clock::before {
+    content: "";
+
+    position: absolute;
+
+    width: 4px;
+    height: 31px;
+
+    background: #3a2925;
+
+    left: 50%;
+    top: 17px;
+
+    transform-origin: bottom;
+
+    transform:
+        rotate(25deg);
+}
+
+.clock::after {
+    content: "";
+
+    position: absolute;
+
+    width: 4px;
+    height: 25px;
+
+    background: #3a2925;
+
+    left: 50%;
+    top: 23px;
+
+    transform-origin: bottom;
+
+    transform:
+        rotate(125deg);
+}
+
+.clock-guide {
+    position: absolute;
+
+    top: 3%;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    color: #d7c5a8;
+
+    font-size: 14px;
+
+    opacity: .75;
+
+    z-index: 20;
+
+    white-space: nowrap;
+}
+
+
+/* =========================
+   WALL ART
+========================= */
+
+.picture {
+    position: absolute;
+
+    background: #d9c6a9;
+
+    border: 8px solid #4a342d;
+
+    box-shadow:
+        0 7px 15px rgba(0,0,0,.3);
+
+    overflow: hidden;
+}
+
+.picture1 {
+    top: 7%;
+    left: 5%;
+
+    width: 130px;
+    height: 95px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #8fa8b5 0%,
+            #b9c8b8 48%,
+            #65765d 49%,
+            #3e5140 100%
+        );
+}
+
+.picture1::before {
+    content: "";
+
+    position: absolute;
+
+    width: 65px;
+    height: 45px;
+
+    background: #53645a;
+
+    bottom: 20px;
+    left: 5px;
+
+    clip-path:
+        polygon(
+            0 100%,
+            45% 20%,
+            70% 65%,
+            100% 100%
+        );
+}
+
+.picture1::after {
+    content: "";
+
+    position: absolute;
+
+    width: 55px;
+    height: 38px;
+
+    background: #435349;
+
+    bottom: 20px;
+    right: 2px;
+
+    clip-path:
+        polygon(
+            0 100%,
+            40% 15%,
+            100% 100%
+        );
+}
+
+.picture2 {
+    top: 26%;
+    left: 28%;
+
+    width: 110px;
+    height: 85px;
+
+    background: #c7a9a2;
+}
+
+.picture2::before {
+    content: "✦";
+
+    position: absolute;
+
+    top: 10px;
+    left: 20px;
+
+    font-size: 30px;
+
+    color: #704d55;
+
+    text-shadow:
+        25px 20px 0 #80645a,
+        45px -5px 0 #5c6d68;
+}
+
+.picture2::after {
+    content: "";
+
+    position: absolute;
+
+    width: 75px;
+    height: 7px;
+
+    background: #80645a;
+
+    left: 17px;
+    bottom: 18px;
+
+    transform:
+        rotate(-10deg);
+
+    box-shadow:
+        8px -12px 0 #a3796f;
+}
+
+.picture3 {
+    top: 10%;
+    right: 7%;
+
+    width: 120px;
+    height: 90px;
+
+    background: #b7a68f;
+}
+
+.picture3::before {
+    content: "";
+
+    position: absolute;
+
+    width: 55px;
+    height: 55px;
+
+    border-radius: 50%;
+
+    background: #d8c28e;
+
+    top: 10px;
+    left: 30px;
+}
+
+.picture3::after {
+    content: "";
+
+    position: absolute;
+
+    width: 90px;
+    height: 35px;
+
+    background: #687064;
+
+    bottom: 0;
+    left: 10px;
+
+    clip-path:
+        polygon(
+            0 100%,
+            20% 40%,
+            35% 70%,
+            55% 20%,
+            75% 65%,
+            100% 30%,
+            100% 100%
+        );
+}
+
+
+/* =========================
+   BED
+========================= */
+
+.bed {
+    position: absolute;
+
+    left: 5%;
+    bottom: 11%;
+
+    width: 455px;
+    height: 190px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #765246 0%,
+            #634238 70%,
+            #4d332c 100%
+        );
+
+    border-radius:
+        14px 14px 8px 8px;
+
+    box-shadow:
+        0 18px 28px rgba(0,0,0,.48);
+
+    z-index: 4;
+}
+
+
+/* WOODEN HEADBOARD */
+
+.bed::before {
+    content: "";
+
+    position: absolute;
+
+    left: -8px;
+    top: -35px;
+
+    width: 18px;
+    height: 190px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #3d2924,
+            #68483b,
+            #3d2924
+        );
+
+    border-radius:
+        8px 0 0 8px;
+
+    box-shadow:
+        5px 0 8px rgba(0,0,0,.25);
+}
+
+
+/* LOWER BED FRAME */
+
+.bed::after {
+    content: "";
+
+    position: absolute;
+
+    left: 10px;
+    right: 10px;
+
+    bottom: 12px;
+
+    height: 30px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #6b473b,
+            #422d27
+        );
+
+    border-radius: 5px;
+
+    box-shadow:
+        inset 0 5px 7px rgba(255,255,255,.06);
+}
+
+
+/* MATTRESS */
+
+.mattress {
+    position: absolute;
+
+    left: 10px;
+    top: -31px;
+
+    width: 435px;
+    height: 77px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #e0d0b9 0%,
+            #cdbda6 65%,
+            #b7a48f 100%
+        );
+
+    border-radius:
+        23px 23px 12px 12px;
+
+    box-shadow:
+        0 8px 10px rgba(0,0,0,.3),
+        inset 0 4px 8px rgba(255,255,255,.25);
+}
+
+.mattress::after {
+    content: "";
+
+    position: absolute;
+
+    left: 5px;
+    right: 5px;
+
+    bottom: 7px;
+
+    height: 7px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(112,91,76,.25);
+}
+
+
+/* BLANKET */
+
+.blanket {
+    position: absolute;
+
+    left: 142px;
+    top: -5px;
+
+    width: 292px;
+    height: 102px;
+
+    background:
+        linear-gradient(
+            105deg,
+            #77706e 0%,
+            #686261 45%,
+            #595555 100%
+        );
+
+    border-radius:
+        0 0 20px 25px;
+
+    box-shadow:
+        inset 0 5px 8px rgba(255,255,255,.06),
+        0 5px 8px rgba(0,0,0,.15);
+}
+
+.blanket::before {
+    content: "";
+
+    position: absolute;
+
+    left: 25px;
+    top: 8px;
+
+    width: 235px;
+    height: 70px;
+
+    border-radius:
+        0 0 20px 20px;
+
+    background:
+        repeating-linear-gradient(
+            100deg,
+            transparent 0px,
+            transparent 34px,
+            rgba(40,35,34,.16) 37px,
+            transparent 43px
+        );
+}
+
+.blanket::after {
+    content: "";
+
+    position: absolute;
+
+    right: 18px;
+    top: 0;
+
+    width: 40px;
+    height: 85px;
+
+    border-radius:
+        0 0 20px 20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.08),
+            transparent
+        );
+
+    transform:
+        rotate(3deg);
+}
+
+
+/* PILLOW */
+
+.pillow {
+    position: absolute;
+
+    left: 25px;
+    top: -21px;
+
+    width: 125px;
+    height: 54px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #eee4d2,
+            #d7c9b3
+        );
+
+    border-radius:
+        20px 22px 16px 17px;
+
+    box-shadow:
+        0 5px 8px rgba(0,0,0,.22),
+        inset 0 3px 5px rgba(255,255,255,.3);
+}
+
+.pillow::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 6px;
+
+    border:
+        1px solid rgba(120,100,85,.22);
+
+    border-radius:
+        15px 17px 12px 13px;
+}
+
+.pillow::after {
+    content: "";
+
+    position: absolute;
+
+    width: 45px;
+    height: 8px;
+
+    left: 38px;
+    top: 21px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(120,100,85,.10);
+
+    transform:
+        rotate(-4deg);
+}
+
+
+/* BED LEGS */
+
+.bed-leg {
+    position: absolute;
+
+    bottom: -32px;
+
+    width: 20px;
+    height: 34px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #30221e,
+            #5a3b31,
+            #30221e
+        );
+
+    border-radius: 3px;
+
+    z-index: -1;
+}
+
+.bed-leg1 {
+    left: 35px;
+}
+
+.bed-leg2 {
+    right: 35px;
+}
+
+.bed .mattress,
+.bed .blanket,
+.bed .pillow {
+    z-index: 2;
+}
+
+
+/* =========================
+   CAT AND DOG
+========================= */
+
+.pets {
+    position: absolute;
+
+    left: 24%;
+    bottom: 7%;
+
+    width: 230px;
+    height: 75px;
+
+    z-index: 9;
+
+    pointer-events: none;
+}
+
+
+/* CAT */
+
+.cat {
+    position: absolute;
+
+    left: 5px;
+    bottom: 0;
+
+    width: 55px;
+    height: 45px;
+
+    background: #8a7467;
+
+    border-radius:
+        50% 50% 45% 45%;
+
+    box-shadow:
+        0 6px 8px rgba(0,0,0,.25);
+}
+
+.cat::before {
+    content: "";
+
+    position: absolute;
+
+    left: 6px;
+    top: -13px;
+
+    width: 18px;
+    height: 22px;
+
+    background: #8a7467;
+
+    clip-path:
+        polygon(
+            0 100%,
+            20% 0,
+            100% 65%,
+            100% 100%
+        );
+}
+
+.cat::after {
+    content: "";
+
+    position: absolute;
+
+    right: 6px;
+    top: -13px;
+
+    width: 18px;
+    height: 22px;
+
+    background: #8a7467;
+
+    clip-path:
+        polygon(
+            0 65%,
+            80% 0,
+            100% 100%,
+            0 100%
+        );
+}
+
+.cat-face {
+    position: absolute;
+
+    left: 15px;
+    top: 12px;
+
+    width: 5px;
+    height: 5px;
+
+    background: #302522;
+
+    border-radius: 50%;
+
+    box-shadow:
+        20px 0 #302522;
+}
+
+.cat-face::after {
+    content: "";
+
+    position: absolute;
+
+    left: 8px;
+    top: 8px;
+
+    width: 5px;
+    height: 4px;
+
+    background: #5c3f38;
+
+    clip-path:
+        polygon(
+            50% 100%,
+            0 0,
+            100% 0
+        );
+}
+
+.cat-tail {
+    position: absolute;
+
+    right: -20px;
+    bottom: 10px;
+
+    width: 30px;
+    height: 30px;
+
+    border:
+        7px solid #8a7467;
+
+    border-left: none;
+
+    border-radius:
+        0 20px 20px 0;
+
+    transform:
+        rotate(-20deg);
+}
+
+
+/* DOG */
+
+.dog {
+    position: absolute;
+
+    right: 8px;
+    bottom: 0;
+
+    width: 72px;
+    height: 48px;
+
+    background: #a98260;
+
+    border-radius:
+        48% 45% 35% 40%;
+
+    box-shadow:
+        0 6px 8px rgba(0,0,0,.25);
+}
+
+.dog-head {
+    position: absolute;
+
+    left: -5px;
+    top: -23px;
+
+    width: 50px;
+    height: 48px;
+
+    background: #b58b65;
+
+    border-radius:
+        50% 48% 45% 45%;
+}
+
+.dog-head::before {
+    content: "";
+
+    position: absolute;
+
+    left: -8px;
+    top: 4px;
+
+    width: 18px;
+    height: 31px;
+
+    background: #76533f;
+
+    border-radius:
+        50% 20% 50% 50%;
+
+    transform:
+        rotate(15deg);
+}
+
+.dog-head::after {
+    content: "";
+
+    position: absolute;
+
+    right: -8px;
+    top: 7px;
+
+    width: 18px;
+    height: 29px;
+
+    background: #76533f;
+
+    border-radius:
+        20% 50% 50% 50%;
+
+    transform:
+        rotate(-15deg);
+}
+
+.dog-face {
+    position: absolute;
+
+    left: 13px;
+    top: 15px;
+
+    width: 5px;
+    height: 5px;
+
+    background: #2b211d;
+
+    border-radius: 50%;
+
+    box-shadow:
+        18px 0 #2b211d;
+}
+
+.dog-face::after {
+    content: "";
+
+    position: absolute;
+
+    left: 8px;
+    top: 8px;
+
+    width: 8px;
+    height: 6px;
+
+    background: #30231f;
+
+    border-radius: 50%;
+}
+
+.dog-tail {
+    position: absolute;
+
+    right: -18px;
+    top: 3px;
+
+    width: 30px;
+    height: 30px;
+
+    border:
+        8px solid #a98260;
+
+    border-left: none;
+
+    border-bottom: none;
+
+    border-radius:
+        0 25px 0 0;
+
+    transform:
+        rotate(-20deg);
+}
+
+.dog-leg {
+    position: absolute;
+
+    bottom: -9px;
+
+    width: 15px;
+    height: 22px;
+
+    background: #916b4f;
+
+    border-radius:
+        0 0 8px 8px;
+}
+
+.dog-leg1 {
+    left: 13px;
+}
+
+.dog-leg2 {
+    left: 43px;
+}
+
+
+/* =========================
+   BEDSIDE TABLE
+========================= */
+
+.bedside {
+    position: absolute;
+
+    left: 1.5%;
+    bottom: 11%;
+
+    width: 105px;
+    height: 130px;
+
+    background: #593d32;
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 12px 20px rgba(0,0,0,.4);
+
+    z-index: 6;
+}
+
+.bedside::before {
+    content: "";
+
+    position: absolute;
+
+    top: 35px;
+    left: 13px;
+
+    width: 79px;
+    height: 8px;
+
+    background: #3c2925;
+
+    box-shadow:
+        0 38px 0 #3c2925;
+}
+
+.table-leg {
+    position: absolute;
+
+    bottom: -30px;
+
+    width: 14px;
+    height: 32px;
+
+    background: #3c2925;
+}
+
+.table-leg1 {
+    left: 15px;
+}
+
+.table-leg2 {
+    right: 15px;
+}
+
+
+/* LAMP */
+
+.lamp {
+    position: absolute;
+
+    left: 27px;
+    top: -65px;
+
+    width: 52px;
+    height: 60px;
+
+    background: #c99b65;
+
+    border-radius:
+        50% 50% 10% 10%;
+
+    box-shadow:
+        0 0 35px rgba(225,176,102,.3);
+}
+
+.lamp::after {
+    content: "";
+
+    position: absolute;
+
+    width: 8px;
+    height: 20px;
+
+    background: #5b4035;
+
+    left: 22px;
+    bottom: -20px;
+}
+
+
+/* =========================
+   EASEL
+========================= */
+
+.easel {
+    position: absolute;
+
+    left: 39%;
+    bottom: 12%;
+
+    width: 155px;
+    height: 205px;
+
+    z-index: 6;
+}
+
+.easel-canvas {
+    position: absolute;
+
+    top: 0;
+    left: 24px;
+
+    width: 108px;
+    height: 82px;
+
+    background: #e7d8bd;
+
+    border:
+        7px solid #68483a;
+
+    box-shadow:
+        0 8px 12px rgba(0,0,0,.35);
+
+    overflow: hidden;
+}
+
+.painting-sky {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #87a9bd 0%,
+            #b7c8bd 58%,
+            #8b9b70 59%,
+            #53664c 100%
+        );
+}
+
+.painting-sun {
+    position: absolute;
+
+    width: 23px;
+    height: 23px;
+
+    border-radius: 50%;
+
+    background: #e4c477;
+
+    top: 12px;
+    right: 14px;
+
+    box-shadow:
+        0 0 12px rgba(228,196,119,.5);
+}
+
+.mountain1 {
+    position: absolute;
+
+    width: 75px;
+    height: 55px;
+
+    bottom: 22px;
+    left: -4px;
+
+    background: #68766d;
+
+    clip-path:
+        polygon(
+            0 100%,
+            48% 5%,
+            100% 100%
+        );
+}
+
+.mountain2 {
+    position: absolute;
+
+    width: 82px;
+    height: 60px;
+
+    bottom: 21px;
+    right: -10px;
+
+    background: #4e6258;
+
+    clip-path:
+        polygon(
+            0 100%,
+            50% 10%,
+            100% 100%
+        );
+}
+
+.mountain-snow {
+    position: absolute;
+
+    width: 35px;
+    height: 22px;
+
+    top: 19px;
+    left: 29px;
+
+    background: #ddd9c7;
+
+    clip-path:
+        polygon(
+            0 100%,
+            50% 0,
+            100% 100%,
+            70% 70%,
+            50% 100%,
+            30% 70%
+        );
+}
+
+.painting-ground {
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 25px;
+
+    background: #506044;
+}
+
+.painting-tree {
+    position: absolute;
+
+    bottom: 16px;
+    left: 13px;
+
+    width: 7px;
+    height: 35px;
+
+    background: #493e34;
+}
+
+.painting-tree::before {
+    content: "";
+
+    position: absolute;
+
+    width: 27px;
+    height: 35px;
+
+    background: #3f5944;
+
+    border-radius: 50%;
+
+    left: -10px;
+    top: -22px;
+}
+
+.easel-shelf {
+    position: absolute;
+
+    top: 79px;
+    left: 16px;
+
+    width: 125px;
+    height: 13px;
+
+    background: #68483a;
+
+    border-radius: 4px;
+}
+
+.easel-leg {
+    position: absolute;
+
+    top: 75px;
+
+    width: 13px;
+    height: 130px;
+
+    background: #68483a;
+
+    transform-origin: top;
+
+    border-radius: 5px;
+}
+
+.easel-leg-left {
+    left: 45px;
+    transform: rotate(15deg);
+}
+
+.easel-leg-right {
+    right: 45px;
+    transform: rotate(-15deg);
+}
+
+.easel-leg-center {
+    left: 70px;
+    height: 135px;
+}
+
+
+/* =========================
+   ART SUPPLIES
+========================= */
+
+.art-supplies {
+    position: absolute;
+
+    left: 15px;
+    bottom: -2px;
+
+    width: 125px;
+    height: 48px;
+
+    z-index: 7;
+}
+
+.palette {
+    position: absolute;
+
+    left: 2px;
+    bottom: 3px;
+
+    width: 48px;
+    height: 25px;
+
+    background: #a98567;
+
+    border-radius: 50%;
+
+    transform:
+        rotate(-12deg);
+
+    box-shadow:
+        0 4px 5px rgba(0,0,0,.35);
+}
+
+.palette::before {
+    content: "";
+
+    position: absolute;
+
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #9d6355;
+
+    top: 5px;
+    left: 10px;
+
+    box-shadow:
+        14px -3px 0 #6d7d65,
+        25px 5px 0 #c59b62,
+        15px 12px 0 #80606b;
+}
+
+.palette::after {
+    content: "";
+
+    position: absolute;
+
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #d6c39c;
+
+    right: 4px;
+    bottom: 5px;
+}
+
+.paint-tube {
+    position: absolute;
+
+    width: 14px;
+    height: 30px;
+
+    border-radius:
+        4px 4px 3px 3px;
+
+    transform-origin: bottom;
+
+    box-shadow:
+        0 3px 4px rgba(0,0,0,.3);
+}
+
+.paint-tube::before {
+    content: "";
+
+    position: absolute;
+
+    top: -5px;
+    left: 3px;
+
+    width: 8px;
+    height: 7px;
+
+    background: #d4c7a9;
+
+    border-radius: 2px;
+}
+
+.paint-tube1 {
+    left: 55px;
+    bottom: 4px;
+
+    background: #9d6355;
+
+    transform:
+        rotate(18deg);
+}
+
+.paint-tube2 {
+    left: 70px;
+    bottom: 3px;
+
+    background: #657764;
+
+    transform:
+        rotate(-12deg);
+}
+
+.paint-tube3 {
+    left: 85px;
+    bottom: 4px;
+
+    background: #b58a5f;
+
+    transform:
+        rotate(22deg);
+}
+
+.brush {
+    position: absolute;
+
+    width: 5px;
+    height: 45px;
+
+    background: #76513e;
+
+    border-radius: 3px;
+
+    transform-origin: bottom;
+}
+
+.brush::before {
+    content: "";
+
+    position: absolute;
+
+    width: 9px;
+    height: 13px;
+
+    left: -2px;
+    top: -7px;
+
+    background: #4f6651;
+
+    border-radius:
+        50% 50% 45% 45%;
+}
+
+.brush1 {
+    left: 101px;
+    bottom: 1px;
+
+    transform:
+        rotate(22deg);
+}
+
+.brush2 {
+    left: 110px;
+    bottom: 2px;
+
+    transform:
+        rotate(35deg);
+}
+
+
+/* =========================
+   DESK
+========================= */
+
+.desk {
+    position: absolute;
+
+    right: 5%;
+    bottom: 11%;
+
+    width: 390px;
+    height: 170px;
+
+    background: #5a4035;
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 15px 25px rgba(0,0,0,.4);
+
+    z-index: 5;
+}
+
+.desk-top {
+    position: absolute;
+
+    top: -15px;
+    left: -10px;
+
+    width: 410px;
+    height: 25px;
+
+    background: #765343;
+
+    border-radius: 5px;
+}
+
+.desk-leg {
+    position: absolute;
+
+    bottom: -80px;
+
+    width: 22px;
+    height: 80px;
+
+    background: #3c2925;
+}
+
+.desk-leg1 {
+    left: 30px;
+}
+
+.desk-leg2 {
+    right: 30px;
+}
+
+
+/* =========================
+   LAPTOP
+========================= */
+
+.laptop {
+    position: absolute;
+
+    width: 145px;
+    height: 90px;
+
+    background: #252323;
+
+    border:
+        6px solid #171717;
+
+    border-radius: 8px;
+
+    top: -105px;
+    left: 115px;
+
+    z-index: 4;
+}
+
+.laptop::after {
+    content: "";
+
+    position: absolute;
+
+    width: 175px;
+    height: 9px;
+
+    background: #171717;
+
+    bottom: -15px;
+    left: -20px;
+
+    border-radius: 5px;
+}
+
+.laptop-screen {
+    position: absolute;
+
+    inset: 8px;
+
+    background: #f0eee8;
+
+    overflow: hidden;
+}
+
+.laptop-screen::before {
+    content: "Document";
+
+    position: absolute;
+
+    top: 5px;
+    left: 7px;
+    right: 7px;
+
+    height: 13px;
+
+    background: #d9d6ce;
+
+    color: #665e57;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 6px;
+
+    font-weight: bold;
+
+    padding: 3px 4px;
+}
+
+.laptop-screen::after {
+    content:
+        "My Writing Project"
+        "\A"
+        "\A"
+        "The evening settled over the quiet room."
+        "\A"
+        "Outside, the moon hung above the trees."
+        "\A"
+        "\A"
+        "The words continued..."
+        "\A"
+        "The story was beginning.";
+
+    white-space: pre;
+
+    position: absolute;
+
+    left: 10px;
+    top: 25px;
+
+    color: #3d3b39;
+
+    font-family: Georgia, serif;
+
+    font-size: 5px;
+
+    line-height: 8px;
+}
+
+
+/* =========================
+   PENCILS
+========================= */
+
+.pencils {
+    position: absolute;
+
+    right: 35px;
+    top: -70px;
+
+    width: 65px;
+    height: 65px;
+}
+
+.pencil {
+    position: absolute;
+
+    width: 7px;
+    height: 65px;
+
+    background: #b87957;
+
+    bottom: 0;
+
+    transform-origin: bottom;
+}
+
+.pencil1 {
+    left: 10px;
+    transform: rotate(-15deg);
+}
+
+.pencil2 {
+    left: 25px;
+    transform: rotate(5deg);
+}
+
+.pencil3 {
+    left: 40px;
+    transform: rotate(20deg);
+}
+
+
+/* =========================
+   VASE
+========================= */
+
+.vase {
+    position: absolute;
+
+    right: 80px;
+    top: -65px;
+
+    width: 45px;
+    height: 65px;
+
+    background: #9b7768;
+
+    border-radius:
+        8px 8px 20px 20px;
+}
+
+.flower {
+    position: absolute;
+
+    width: 9px;
+    height: 65px;
+
+    background: #576044;
+
+    bottom: 55px;
+    left: 18px;
+
+    transform:
+        rotate(-10deg);
+}
+
+
+/* =========================
+   GIRL
+========================= */
+
+.girl {
+    position: absolute;
+
+    left: 48%;
+    bottom: 14%;
+
+    width: 130px;
+    height: 270px;
+
+    z-index: 8;
+
+    transition:
+        left 1.8s ease;
+}
+
+.head {
+    position: absolute;
+
+    left: 38px;
+    top: 5px;
+
+    width: 65px;
+    height: 75px;
+
+    background: #d6a47c;
+
+    border-radius:
+        48% 48% 45% 45%;
+}
+
+.hair {
+    position: absolute;
+
+    left: 28px;
+    top: -4px;
+
+    width: 82px;
+    height: 82px;
+
+    background: #241b1a;
+
+    border-radius:
+        50% 50% 35% 35%;
+
+    z-index: 2;
+}
+
+.hair::after {
+    content: "";
+
+    position: absolute;
+
+    right: -8px;
+    top: 20px;
+
+    width: 22px;
+    height: 75px;
+
+    background: #241b1a;
+
+    border-radius:
+        0 0 15px 15px;
+}
+
+.face {
+    position: absolute;
+
+    left: 52px;
+    top: 28px;
+
+    width: 5px;
+    height: 5px;
+
+    background: #2c211e;
+
+    border-radius: 50%;
+
+    z-index: 4;
+
+    box-shadow:
+        25px 0 #2c211e;
+}
+
+.body {
+    position: absolute;
+
+    left: 33px;
+    top: 73px;
+
+    width: 75px;
+    height: 120px;
+
+    background: #282c30;
+
+    border-radius:
+        18px 18px 8px 8px;
+}
+
+.arm {
+    position: absolute;
+
+    top: 82px;
+
+    width: 20px;
+    height: 95px;
+
+    background: #d6a47c;
+
+    border-radius: 15px;
+}
+
+.arm-left {
+    left: 18px;
+
+    transform:
+        rotate(15deg);
+}
+
+.arm-right {
+    right: 18px;
+
+    transform:
+        rotate(-15deg);
+}
+
+.leg {
+    position: absolute;
+
+    top: 185px;
+
+    width: 25px;
+    height: 80px;
+
+    background: #272426;
+
+    border-radius: 12px;
+}
+
+.leg-left {
+    left: 38px;
+}
+
+.leg-right {
+    right: 38px;
+}
+
+.shoe {
+    position: absolute;
+
+    bottom: -4px;
+
+    width: 42px;
+    height: 20px;
+
+    background: #171516;
+
+    border-radius:
+        15px 15px 7px 7px;
+}
+
+.shoe-left {
+    left: 26px;
+}
+
+.shoe-right {
+    right: 26px;
+}
+
+
+/* WORKING HEAD MOVEMENT */
+
+.girl.working .head {
+    animation:
+        headBob 1.4s infinite ease-in-out;
+}
+
+@keyframes headBob {
+
+    0%, 100% {
+        transform:
+            rotate(0deg);
+    }
+
+    50% {
+        transform:
+            rotate(5deg);
+    }
+
+}
+
+
+/* =========================
+   MODALS
+========================= */
+
+.modal {
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        rgba(0,0,0,.62);
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    z-index: 100;
+}
+
+.modal-box {
+    width: 360px;
+
+    padding: 30px;
+
+    background: #e6d7bd;
+
+    color: #3a2924;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.5);
+
+    text-align: center;
+}
+
+.modal-box h2 {
+    margin-top: 0;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+button {
+    border: none;
+
+    padding:
+        12px 20px;
+
+    margin: 7px;
+
+    border-radius: 8px;
+
+    background: #66483d;
+
+    color: white;
+
+    font-family: Georgia, serif;
+
+    cursor: pointer;
+
+    font-size: 15px;
+}
+
+button:hover {
+    background: #805b4d;
+}
+
+
+/* =========================
+   INPUT
+========================= */
+
+input {
+    width: 100%;
+
+    padding: 12px;
+
+    margin: 12px 0;
+
+    border:
+        2px solid #9d806d;
+
+    border-radius: 8px;
+
+    font-family: Georgia, serif;
+
+    font-size: 16px;
+}
+
+
+/* =========================
+   TIMER
+========================= */
+
+.timer {
+    position: fixed;
+
+    top: 25px;
+    right: 25px;
+
+    padding:
+        14px 20px;
+
+    background:
+        rgba(30,20,18,.85);
+
+    color: #eadfc9;
+
+    border-radius: 10px;
+
+    display: none;
+
+    z-index: 90;
+
+    text-align: center;
+}
+
+.timer-time {
+    font-size: 27px;
+
+    margin-bottom: 7px;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="room">
+
+
+    <div class="wall"></div>
+
+    <div class="floor"></div>
+
+
+    <!-- WINDOW -->
+
+    <div class="window" id="window">
+
+        <div class="moon"></div>
+
+        <div class="sun"></div>
+
+        <div class="cloud cloud1"></div>
+
+        <div class="cloud cloud2"></div>
+
+
+        <div class="day-trees">
+
+            <div class="day-tree day-tree1"></div>
+            <div class="day-tree day-tree2"></div>
+            <div class="day-tree day-tree3"></div>
+            <div class="day-tree day-tree4"></div>
+
+        </div>
+
+
+        <div class="star star1">✦</div>
+        <div class="star star2">✦</div>
+        <div class="star star3">✦</div>
+        <div class="star star4">✦</div>
+        <div class="star star5">✦</div>
+
+    </div>
+
+
+    <!-- WALL ART -->
+
+    <div class="picture picture1"></div>
+
+    <div class="picture picture2"></div>
+
+    <div class="picture picture3"></div>
+
+
+    <!-- CLOCK -->
+
+    <div class="clock" id="clock"></div>
+
+    <div class="clock-guide">
+        click the clock and the window
+    </div>
+
+
+    <!-- BED -->
+
+    <div class="bed">
+
+        <div class="mattress"></div>
+
+        <div class="blanket"></div>
+
+        <div class="pillow"></div>
+
+        <div class="bed-leg bed-leg1"></div>
+
+        <div class="bed-leg bed-leg2"></div>
+
+    </div>
+
+
+    <!-- CAT AND DOG -->
+
+    <div class="pets">
+
+        <div class="cat">
+
+            <div class="cat-face"></div>
+
+            <div class="cat-tail"></div>
+
+        </div>
+
+
+        <div class="dog">
+
+            <div class="dog-head">
+
+                <div class="dog-face"></div>
+
+            </div>
+
+            <div class="dog-tail"></div>
+
+            <div class="dog-leg dog-leg1"></div>
+
+            <div class="dog-leg dog-leg2"></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- BEDSIDE TABLE -->
+
+    <div class="bedside">
+
+        <div class="lamp"></div>
+
+        <div class="table-leg table-leg1"></div>
+
+        <div class="table-leg table-leg2"></div>
+
+    </div>
+
+
+    <!-- EASEL -->
+
+    <div class="easel">
+
+
+        <div class="easel-canvas">
+
+            <div class="painting-sky"></div>
+
+            <div class="painting-sun"></div>
+
+            <div class="mountain1"></div>
+
+            <div class="mountain2"></div>
+
+            <div class="mountain-snow"></div>
+
+            <div class="painting-ground"></div>
+
+            <div class="painting-tree"></div>
+
+        </div>
+
+
+        <div class="easel-shelf"></div>
+
+
+        <div class="easel-leg easel-leg-left"></div>
+
+        <div class="easel-leg easel-leg-right"></div>
+
+        <div class="easel-leg easel-leg-center"></div>
+
+
+        <!-- ART SUPPLIES -->
+
+        <div class="art-supplies">
+
+            <div class="palette"></div>
+
+            <div class="paint-tube paint-tube1"></div>
+
+            <div class="paint-tube paint-tube2"></div>
+
+            <div class="paint-tube paint-tube3"></div>
+
+            <div class="brush brush1"></div>
+
+            <div class="brush brush2"></div>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- DESK -->
+
+    <div class="desk">
+
+
+        <div class="desk-top"></div>
+
+
+        <!-- LAPTOP -->
+
+        <div class="laptop">
+
+            <div class="laptop-screen"></div>
+
+        </div>
+
+
+        <!-- PENCILS -->
+
+        <div class="pencils">
+
+            <div class="pencil pencil1"></div>
+
+            <div class="pencil pencil2"></div>
+
+            <div class="pencil pencil3"></div>
+
+        </div>
+
+
+        <!-- VASE -->
+
+        <div class="vase">
+
+            <div class="flower"></div>
+
+        </div>
+
+
+        <div class="desk-leg desk-leg1"></div>
+
+        <div class="desk-leg desk-leg2"></div>
+
+
+    </div>
+
+
+    <!-- GIRL -->
+
+    <div class="girl" id="girl">
+
+
+        <div class="hair"></div>
+
+
+        <div class="head">
+
+            <div class="face"></div>
+
+        </div>
+
+
+        <div class="body"></div>
+
+
+        <div class="arm arm-left"></div>
+
+        <div class="arm arm-right"></div>
+
+
+        <div class="leg leg-left"></div>
+
+        <div class="leg leg-right"></div>
+
+
+        <div class="shoe shoe-left"></div>
+
+        <div class="shoe shoe-right"></div>
+
+
+    </div>
+
+
+</div>
+
+
+<!-- =========================
+     DAY / NIGHT MODAL
+========================= -->
+
+<div class="modal" id="timeModal">
+
+    <div class="modal-box">
+
+        <h2>What time is it?</h2>
+
+        <button onclick="setTime('day')">
+            ☀️ Day
+        </button>
+
+        <button onclick="setTime('night')">
+            🌙 Night
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     ACTIVITY MODAL
+========================= -->
+
+<div class="modal" id="activityModal">
+
+    <div class="modal-box">
+
+        <h2>What are you going to do?</h2>
+
+        <button onclick="chooseActivity('work')">
+            💻 Work
+        </button>
+
+        <button onclick="chooseActivity('hobby')">
+            🎨 Hobbies
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     DURATION MODAL
+========================= -->
+
+<div class="modal" id="durationModal">
+
+    <div class="modal-box">
+
+        <h2>How long do you want to focus?</h2>
+
+        <input
+            id="minutesInput"
+            type="number"
+            min="1"
+            max="999"
+            placeholder="Minutes"
+        >
+
+        <button onclick="startSession()">
+            Start
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     TIMER
+========================= -->
+
+<div class="timer" id="timer">
+
+    <div class="timer-time" id="timerDisplay">
+        00:00
+    </div>
+
+
+    <button
+        onclick="pauseTimer()"
+        id="pauseButton"
+    >
+        Pause
+    </button>
+
+
+    <button onclick="endSession()">
+        End Session
+    </button>
+
+</div>
+
+
+<script>
+
+
+/* =========================
+   VARIABLES
+========================= */
+
+let selectedActivity = null;
+
+let timerInterval = null;
+
+let remainingSeconds = 0;
+
+let paused = false;
+
+
+/* =========================
+   DAY / NIGHT
+========================= */
+
+document
+    .getElementById("window")
+    .addEventListener("click", function() {
+
+        document
+            .getElementById("timeModal")
+            .style.display = "flex";
+
+    });
+
+
+function setTime(time) {
+
+    const windowElement =
+        document.getElementById("window");
+
+
+    const moon =
+        windowElement.querySelector(".moon");
+
+
+    const stars =
+        windowElement.querySelectorAll(".star");
+
+
+    document
+        .getElementById("timeModal")
+        .style.display = "none";
+
+
+    if (time === "day") {
+
+        windowElement.classList.add("day");
+
+        moon.style.display = "none";
+
+        stars.forEach(function(star) {
+
+            star.style.display = "none";
+
+        });
+
+    }
+
+
+    if (time === "night") {
+
+        windowElement.classList.remove("day");
+
+        moon.style.display = "block";
+
+        stars.forEach(function(star) {
+
+            star.style.display = "block";
+
+        });
+
+    }
+
+}
+
+
+/* =========================
+   CLOCK CLICK
+========================= */
+
+document
+    .getElementById("clock")
+    .addEventListener("click", function() {
+
+        document
+            .getElementById("activityModal")
+            .style.display = "flex";
+
+    });
+
+
+/* =========================
+   CHOOSE ACTIVITY
+========================= */
+
+function chooseActivity(activity) {
+
+    selectedActivity = activity;
+
+
+    document
+        .getElementById("activityModal")
+        .style.display = "none";
+
+
+    document
+        .getElementById("durationModal")
+        .style.display = "flex";
+
+}
+
+
+/* =========================
+   START SESSION
+========================= */
+
+function startSession() {
+
+    const input =
+        document.getElementById("minutesInput");
+
+
+    let minutes =
+        parseInt(input.value);
+
+
+    if (!minutes || minutes < 1) {
+
+        alert(
+            "Please enter at least 1 minute."
+        );
+
+        return;
+
+    }
+
+
+    if (minutes > 999) {
+
+        minutes = 999;
+
+    }
+
+
+    remainingSeconds =
+        minutes * 60;
+
+
+    document
+        .getElementById("durationModal")
+        .style.display = "none";
+
+
+    const girl =
+        document.getElementById("girl");
+
+
+    girl.classList.remove("working");
+
+
+    /* WORK */
+
+    if (selectedActivity === "work") {
+
+        girl.style.left = "68%";
+
+
+        setTimeout(function() {
+
+            girl.classList.add("working");
+
+        }, 1800);
+
+    }
+
+
+    /* HOBBY */
+
+    if (selectedActivity === "hobby") {
+
+        girl.style.left = "34%";
+
+    }
+
+
+    document
+        .getElementById("timer")
+        .style.display = "block";
+
+
+    paused = false;
+
+
+    document
+        .getElementById("pauseButton")
+        .textContent = "Pause";
+
+
+    updateTimerDisplay();
+
+
+    timerInterval =
+        setInterval(function() {
+
+
+            if (!paused) {
+
+                remainingSeconds--;
+
+
+                updateTimerDisplay();
+
+
+                if (remainingSeconds <= 0) {
+
+                    sessionFinished();
+
+                }
+
+            }
+
+
+        }, 1000);
+
+}
+
+
+/* =========================
+   TIMER DISPLAY
+========================= */
+
+function updateTimerDisplay() {
+
+    let minutes =
+        Math.floor(
+            remainingSeconds / 60
+        );
+
+
+    let seconds =
+        remainingSeconds % 60;
+
+
+    minutes =
+        String(minutes).padStart(2, "0");
+
+
+    seconds =
+        String(seconds).padStart(2, "0");
+
+
+    document
+        .getElementById("timerDisplay")
+        .textContent =
+        minutes + ":" + seconds;
+
+}
+
+
+/* =========================
+   PAUSE
+========================= */
+
+function pauseTimer() {
+
+    paused = !paused;
+
+
+    const button =
+        document.getElementById("pauseButton");
+
+
+    if (paused) {
+
+        button.textContent = "Resume";
+
+    } else {
+
+        button.textContent = "Pause";
+
+    }
+
+}
+
+
+/* =========================
+   END SESSION
+========================= */
+
+function endSession() {
+
+    clearInterval(timerInterval);
+
+    timerInterval = null;
+
+
+    document
+        .getElementById("timer")
+        .style.display = "none";
+
+
+    document
+        .getElementById("girl")
+        .classList.remove("working");
+
+
+    document
+        .getElementById("girl")
+        .style.left = "48%";
+
+
+    remainingSeconds = 0;
+
+}
+
+
+/* =========================
+   SESSION FINISHED
+========================= */
+
+function sessionFinished() {
+
+    clearInterval(timerInterval);
+
+    timerInterval = null;
+
+
+    document
+        .getElementById("timer")
+        .style.display = "none";
+
+
+    document
+        .getElementById("girl")
+        .classList.remove("working");
+
+
+    document
+        .getElementById("girl")
+        .style.left = "48%";
+
+
+    playChime();
+
+
+    setTimeout(function() {
+
+        alert(
+            "Focus session complete ✦"
+        );
+
+    }, 300);
+
+
+    remainingSeconds = 0;
+
+}
+
+
+/* =========================
+   THREE NOTE CHIME
+========================= */
+
+function playChime() {
+
+    const AudioContext =
+        window.AudioContext ||
+        window.webkitAudioContext;
+
+
+    if (!AudioContext) return;
+
+
+    const audioContext =
+        new AudioContext();
+
+
+    const notes = [
+
+        523.25,
+        659.25,
+        783.99
+
+    ];
+
+
+    notes.forEach(function(freq, index) {
+
+
+        const oscillator =
+            audioContext.createOscillator();
+
+
+        const gain =
+            audioContext.createGain();
+
+
+        oscillator.type = "sine";
+
+
+        oscillator.frequency.value =
+            freq;
+
+
+        oscillator.connect(gain);
+
+
+        gain.connect(
+            audioContext.destination
+        );
+
+
+        const startTime =
+            audioContext.currentTime +
+            index * 0.22;
+
+
+        gain.gain.setValueAtTime(
+            0,
+            startTime
+        );
+
+
+        gain.gain.linearRampToValueAtTime(
+            0.18,
+            startTime + 0.03
+        );
+
+
+        gain.gain.exponentialRampToValueAtTime(
+            0.001,
+            startTime + 0.6
+        );
+
+
+        oscillator.start(startTime);
+
+
+        oscillator.stop(
+            startTime + 0.6
+        );
+
+    });
+
+}
+
+
+</script>
+
+</body>
+
+</html>
