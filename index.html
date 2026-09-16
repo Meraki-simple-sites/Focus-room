@@ -5,6 +5,8 @@
 
 <meta charset="UTF-8">
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Lofi Focus Room</title>
 
 <style>
@@ -17,9 +19,15 @@
     box-sizing: border-box;
 }
 
+html,
 body {
     margin: 0;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
+}
+
+body {
     font-family: Georgia, serif;
     background: #1b1412;
 }
@@ -29,6 +37,7 @@ body {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
+
     background:
         linear-gradient(
             to bottom,
@@ -92,8 +101,10 @@ body {
 
 .window {
     position: absolute;
+
     top: 8%;
     left: 52%;
+
     width: 300px;
     height: 270px;
 
@@ -669,9 +680,6 @@ body {
     z-index: 4;
 }
 
-
-/* WOODEN HEADBOARD */
-
 .bed::before {
     content: "";
 
@@ -698,9 +706,6 @@ body {
         5px 0 8px rgba(0,0,0,.25);
 }
 
-
-/* LOWER BED FRAME */
-
 .bed::after {
     content: "";
 
@@ -725,9 +730,6 @@ body {
     box-shadow:
         inset 0 5px 7px rgba(255,255,255,.06);
 }
-
-
-/* MATTRESS */
 
 .mattress {
     position: absolute;
@@ -771,9 +773,6 @@ body {
     background:
         rgba(112,91,76,.25);
 }
-
-
-/* BLANKET */
 
 .blanket {
     position: absolute;
@@ -850,9 +849,6 @@ body {
         rotate(3deg);
 }
 
-
-/* PILLOW */
-
 .pillow {
     position: absolute;
 
@@ -911,9 +907,6 @@ body {
         rotate(-4deg);
 }
 
-
-/* BED LEGS */
-
 .bed-leg {
     position: absolute;
 
@@ -967,9 +960,6 @@ body {
 
     pointer-events: none;
 }
-
-
-/* CAT */
 
 .cat {
     position: absolute;
@@ -1091,9 +1081,6 @@ body {
     transform:
         rotate(-20deg);
 }
-
-
-/* DOG */
 
 .dog {
     position: absolute;
@@ -1305,9 +1292,6 @@ body {
 .table-leg2 {
     right: 15px;
 }
-
-
-/* LAMP */
 
 .lamp {
     position: absolute;
@@ -2188,10 +2172,13 @@ body {
     justify-content: center;
 
     z-index: 100;
+
+    padding: 20px;
 }
 
 .modal-box {
     width: 360px;
+    max-width: 100%;
 
     padding: 30px;
 
@@ -2235,6 +2222,8 @@ button {
     cursor: pointer;
 
     font-size: 15px;
+
+    touch-action: manipulation;
 }
 
 button:hover {
@@ -2295,6 +2284,695 @@ input {
     font-size: 27px;
 
     margin-bottom: 7px;
+}
+
+
+/* =========================================================
+   MOBILE VERSION
+========================================================= */
+
+@media (max-width: 600px) {
+
+    body {
+        overflow: hidden;
+    }
+
+    .room {
+        width: 100vw;
+        height: 100vh;
+    }
+
+
+    /* WALL / FLOOR */
+
+    .wall {
+        height: 67%;
+    }
+
+    .floor {
+        height: 33%;
+    }
+
+
+    /* WINDOW */
+
+    .window {
+        top: 7%;
+        left: auto;
+        right: 8%;
+
+        width: 155px;
+        height: 145px;
+
+        border-width: 7px;
+    }
+
+    .window::before {
+        width: 4px;
+    }
+
+    .window::after {
+        height: 4px;
+    }
+
+    .moon {
+        width: 38px;
+        height: 38px;
+
+        top: 18px;
+        right: 20px;
+    }
+
+    .sun {
+        width: 38px;
+        height: 38px;
+
+        top: 18px;
+        right: 20px;
+    }
+
+    .cloud {
+        width: 38px;
+        height: 12px;
+    }
+
+    .cloud::before {
+        width: 17px;
+        height: 17px;
+
+        left: 6px;
+        top: -8px;
+    }
+
+    .cloud::after {
+        width: 14px;
+        height: 14px;
+
+        right: 6px;
+        top: -6px;
+    }
+
+    .cloud1 {
+        top: 35px;
+        left: 18px;
+    }
+
+    .cloud2 {
+        top: 75px;
+        left: 75px;
+    }
+
+    .day-trees {
+        height: 42px;
+    }
+
+    .day-tree {
+        width: 35px;
+        height: 42px;
+    }
+
+    .day-tree1 {
+        left: 4px;
+    }
+
+    .day-tree2 {
+        left: 35px;
+    }
+
+    .day-tree3 {
+        right: 25px;
+    }
+
+    .day-tree4 {
+        right: 3px;
+    }
+
+
+    /* WALL ART */
+
+    .picture1 {
+        top: 8%;
+        left: 5%;
+
+        width: 82px;
+        height: 60px;
+
+        border-width: 5px;
+    }
+
+    .picture1::before {
+        width: 40px;
+        height: 30px;
+        bottom: 12px;
+    }
+
+    .picture1::after {
+        width: 35px;
+        height: 25px;
+        bottom: 12px;
+    }
+
+    .picture2 {
+        top: 25%;
+        left: 7%;
+
+        width: 70px;
+        height: 55px;
+
+        border-width: 5px;
+    }
+
+    .picture2::before {
+        top: 5px;
+        left: 12px;
+        font-size: 20px;
+    }
+
+    .picture2::after {
+        width: 48px;
+        left: 10px;
+        bottom: 11px;
+    }
+
+    .picture3 {
+        top: 5%;
+        right: 5%;
+
+        width: 70px;
+        height: 55px;
+
+        border-width: 5px;
+    }
+
+    .picture3::before {
+        width: 30px;
+        height: 30px;
+        top: 7px;
+        left: 18px;
+    }
+
+    .picture3::after {
+        width: 50px;
+        height: 22px;
+        left: 8px;
+    }
+
+
+    /* CLOCK */
+
+    .clock {
+        top: 6%;
+        left: 39%;
+
+        width: 65px;
+        height: 65px;
+
+        border-width: 6px;
+    }
+
+    .clock::before {
+        width: 3px;
+        height: 20px;
+
+        top: 12px;
+    }
+
+    .clock::after {
+        width: 3px;
+        height: 17px;
+
+        top: 15px;
+    }
+
+    .clock-guide {
+        top: 1.5%;
+
+        font-size: 10px;
+    }
+
+
+    /* BED */
+
+    .bed {
+        left: 4%;
+        bottom: 13%;
+
+        width: 55%;
+        height: 115px;
+
+        border-radius: 10px;
+    }
+
+    .bed::before {
+        left: -5px;
+        top: -22px;
+
+        width: 11px;
+        height: 115px;
+    }
+
+    .bed::after {
+        left: 7px;
+        right: 7px;
+
+        bottom: 8px;
+
+        height: 19px;
+    }
+
+    .mattress {
+        left: 6px;
+        top: -20px;
+
+        width: calc(100% - 12px);
+        height: 47px;
+
+        border-radius:
+            14px 14px 8px 8px;
+    }
+
+    .blanket {
+        left: 31%;
+        top: -3px;
+
+        width: 66%;
+        height: 62px;
+
+        border-radius:
+            0 0 12px 15px;
+    }
+
+    .blanket::before {
+        left: 10px;
+        top: 5px;
+
+        width: calc(100% - 20px);
+        height: 43px;
+    }
+
+    .blanket::after {
+        right: 8px;
+        width: 20px;
+        height: 50px;
+    }
+
+    .pillow {
+        left: 12px;
+        top: -13px;
+
+        width: 65px;
+        height: 29px;
+
+        border-radius:
+            11px 12px 9px 9px;
+    }
+
+    .pillow::before {
+        inset: 3px;
+    }
+
+    .pillow::after {
+        width: 23px;
+        height: 4px;
+
+        left: 20px;
+        top: 11px;
+    }
+
+    .bed-leg {
+        bottom: -19px;
+
+        width: 12px;
+        height: 20px;
+    }
+
+    .bed-leg1 {
+        left: 20px;
+    }
+
+    .bed-leg2 {
+        right: 20px;
+    }
+
+
+    /* PETS */
+
+    .pets {
+        left: 16%;
+        bottom: 9%;
+
+        width: 125px;
+        height: 45px;
+
+        transform: scale(.75);
+        transform-origin: bottom left;
+    }
+
+
+    /* BEDSIDE TABLE */
+
+    .bedside {
+        left: 1%;
+        bottom: 13%;
+
+        width: 65px;
+        height: 82px;
+
+        border-radius: 6px;
+    }
+
+    .bedside::before {
+        top: 22px;
+        left: 8px;
+
+        width: 49px;
+        height: 5px;
+
+        box-shadow:
+            0 25px 0 #3c2925;
+    }
+
+    .table-leg {
+        bottom: -20px;
+
+        width: 9px;
+        height: 22px;
+    }
+
+    .table-leg1 {
+        left: 9px;
+    }
+
+    .table-leg2 {
+        right: 9px;
+    }
+
+    .lamp {
+        left: 17px;
+        top: -42px;
+
+        width: 32px;
+        height: 39px;
+    }
+
+    .lamp::after {
+        width: 5px;
+        height: 13px;
+
+        left: 14px;
+        bottom: -13px;
+    }
+
+
+    /* EASEL */
+
+    .easel {
+        left: 53%;
+        bottom: 14%;
+
+        width: 100px;
+        height: 135px;
+
+        transform: scale(.8);
+        transform-origin: bottom left;
+    }
+
+
+    /* DESK */
+
+    .desk {
+        right: 3%;
+        bottom: 13%;
+
+        width: 43%;
+        height: 105px;
+
+        border-radius: 6px;
+    }
+
+    .desk-top {
+        top: -9px;
+        left: -6px;
+
+        width: calc(100% + 12px);
+        height: 16px;
+    }
+
+    .desk-leg {
+        bottom: -48px;
+
+        width: 13px;
+        height: 48px;
+    }
+
+    .desk-leg1 {
+        left: 15px;
+    }
+
+    .desk-leg2 {
+        right: 15px;
+    }
+
+
+    /* LAPTOP */
+
+    .laptop {
+        width: 90px;
+        height: 57px;
+
+        border-width: 4px;
+
+        top: -68px;
+        left: 50%;
+
+        transform: translateX(-50%);
+    }
+
+    .laptop::after {
+        width: 110px;
+        height: 6px;
+
+        bottom: -10px;
+        left: -13px;
+    }
+
+    .laptop-screen {
+        inset: 5px;
+    }
+
+    .laptop-screen::before {
+        top: 3px;
+        left: 4px;
+        right: 4px;
+
+        height: 9px;
+
+        font-size: 4px;
+
+        padding: 2px;
+    }
+
+    .laptop-screen::after {
+        left: 5px;
+        top: 17px;
+
+        font-size: 3px;
+        line-height: 5px;
+    }
+
+
+    /* PENCILS */
+
+    .pencils {
+        right: 12px;
+        top: -45px;
+
+        transform: scale(.7);
+        transform-origin: bottom right;
+    }
+
+
+    /* VASE */
+
+    .vase {
+        right: 30px;
+        top: -43px;
+
+        width: 28px;
+        height: 42px;
+    }
+
+    .flower {
+        width: 5px;
+        height: 42px;
+
+        bottom: 35px;
+        left: 11px;
+    }
+
+
+    /* GIRL */
+
+    .girl {
+        left: 43%;
+        bottom: 15%;
+
+        transform: scale(.72);
+        transform-origin: bottom center;
+    }
+
+
+    /* TIMER */
+
+    .timer {
+        top: auto;
+        right: 10px;
+        left: 10px;
+        bottom: 10px;
+
+        padding: 10px;
+
+        border-radius: 12px;
+    }
+
+    .timer-time {
+        font-size: 25px;
+        margin-bottom: 4px;
+    }
+
+    .timer button {
+        margin: 4px;
+        padding: 10px 14px;
+    }
+
+
+    /* MODALS */
+
+    .modal {
+        padding: 15px;
+    }
+
+    .modal-box {
+        width: 100%;
+        max-width: 340px;
+
+        padding: 24px 18px;
+
+        border-radius: 14px;
+    }
+
+    .modal-box h2 {
+        font-size: 21px;
+    }
+
+    .modal-box button {
+        display: block;
+
+        width: 100%;
+
+        margin: 8px 0;
+    }
+
+    input {
+        font-size: 16px;
+    }
+
+}
+
+
+/* =========================
+   VERY SMALL PHONES
+========================= */
+
+@media (max-width: 380px) {
+
+    .window {
+        width: 135px;
+        height: 125px;
+    }
+
+    .clock {
+        left: 37%;
+        width: 58px;
+        height: 58px;
+    }
+
+    .bed {
+        width: 56%;
+    }
+
+    .desk {
+        width: 41%;
+    }
+
+    .easel {
+        left: 50%;
+        transform: scale(.68);
+    }
+
+    .girl {
+        transform: scale(.62);
+    }
+
+    .pets {
+        transform: scale(.65);
+    }
+
+}
+
+
+/* =========================
+   LANDSCAPE PHONES
+========================= */
+
+@media (max-width: 900px) and (orientation: landscape) {
+
+    .window {
+        width: 190px;
+        height: 170px;
+    }
+
+    .bed {
+        width: 42%;
+        height: 125px;
+    }
+
+    .desk {
+        width: 38%;
+        height: 115px;
+    }
+
+    .easel {
+        left: 48%;
+        transform: scale(.75);
+    }
+
+    .girl {
+        bottom: 12%;
+        transform: scale(.65);
+    }
+
+    .pets {
+        bottom: 7%;
+    }
+
+    .clock-guide {
+        top: 2%;
+    }
+
+}
+
+
+/* =========================
+   TOUCH DEVICES
+========================= */
+
+@media (hover: none) {
+
+    button:hover {
+        background: #66483d;
+    }
+
 }
 
 </style>
@@ -2873,6 +3551,9 @@ function startSession() {
     updateTimerDisplay();
 
 
+    clearInterval(timerInterval);
+
+
     timerInterval =
         setInterval(function() {
 
@@ -3117,7 +3798,6 @@ function playChime() {
     });
 
 }
-
 
 </script>
 
